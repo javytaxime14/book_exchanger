@@ -1,0 +1,122 @@
+<% if @book.state == 'Available' %> 
+    <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+        <div class="card-header"><strong><small><%= @book.state %></small></strong></div>
+          <div class="card-body">
+            <h5 class="card-title"><%= @book.title %></h5>
+            <p class="card-text mt-4">
+              <strong>Author:</strong>
+              <%= @book.author %>
+            </p>
+            
+            <p>
+              <strong>Description:</strong>
+              <%= @book.description %>
+            </p>
+            
+            <p>
+              <strong>Genre:</strong>
+              <%= @book.genre %>
+            </p>
+            
+            <p>
+              <strong>Publisher:</strong>
+              <%= @book.publisher %>
+            </p>
+            
+            <p>
+              <strong>Year:</strong>
+              <%= @book.year %>
+            </p>
+            
+            <p>
+              <strong>Isbn:</strong>
+              <%= @book.isbn %>
+            </p>
+            
+            <p>
+              <strong>State:</strong>
+              <%= @book.state %>
+            </p>
+            
+            <p>
+              <strong>Owner:</strong>
+              <%= @book.user.name %>
+            </p>
+          </div>
+        </div>
+
+        <% if @book.state == 'Available' && user_signed_in? && current_user == @book.user %> 
+                <%= link_to 'Quiero intercambiarlo!', root_path, class: 'btn btn-sm btn-secondary' %>
+                <%= link_to 'Leído', root_path, class: 'btn btn-sm btn-warning' %>
+                <%= link_to 'Eliminar', destroy_book_path(book), method: :delete, data: { confirm: "Seguro que desea eliminar? (Tenga en cuenta que esta acción no se puede deshacer)", disable_with: "Eliminando..." }, class: 'btn btn-sm btn-dark' %>
+        <% end %>
+        <% if @book.state == 'Available' &&  user_signed_in? && current_user != @book.user %>
+                <%= link_to 'Quiero leerlo!', root_path, class: 'btn btn-sm btn-secondary' %>
+                <%= link_to 'Leído', root_path, class: 'btn btn-sm btn-warning' %>
+        <% end %>
+    </div>
+<% else %>
+    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+        <div class="card-header"><strong><small><%= @book.state %></small></strong></div>
+        <div class="card-body">
+        <h5 class="card-title"><%= @book.title %></h5>
+        <p class="card-text mt-4">
+          <strong>Author:</strong>
+          <%= @book.author %>
+        </p>
+        
+        <p>
+          <strong>Description:</strong>
+          <%= @book.description %>
+        </p>
+        
+        <p>
+          <strong>Genre:</strong>
+          <%= @book.genre %>
+        </p>
+        
+        <p>
+          <strong>Publisher:</strong>
+          <%= @book.publisher %>
+        </p>
+        
+        <p>
+          <strong>Year:</strong>
+          <%= @book.year %>
+        </p>
+        
+        <p>
+          <strong>Isbn:</strong>
+          <%= @book.isbn %>
+        </p>
+        
+        <p>
+          <strong>State:</strong>
+          <%= @book.state %>
+        </p>
+        
+        <p>
+          <strong>Owner:</strong>
+          <%= @book.user.name %>
+        </p>
+      </div>
+    </div>
+
+        <% if @book.state == 'Traded' &&  user_signed_in? && current_user == @book.user %> 
+            <%= link_to 'Dejar Disponible!', root_path, class: 'btn btn-sm btn-secondary' %>
+            <%= link_to 'Leído', root_path, class: 'btn btn-sm btn-warning' %>
+        <% end %>
+        <% if @book.state == 'Traded' &&  user_signed_in? && current_user != @book.user %>
+            <%= link_to 'Leído', root_path, class: 'btn btn-sm btn-warning' %>
+        <% end %>
+    </div>
+<% end %>
+
+<% if @book.user == current_user %>
+  <%= link_to 'Edit', edit_book_path(@book), class: 'btn btn-outline-primary btn-sm mt-2' %> |
+  <%= link_to 'Delete', book_path(@book), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger btn-sm mt-2' %>
+  <%= link_to 'Back', books_path, class: 'btn btn-outline-success btn-sm mt-2' %>
+<% else %>
+  <%= link_to 'Back', books_path, class: 'btn btn-outline-success btn-sm mt-2 pl-5' %>
+<% end %>
+

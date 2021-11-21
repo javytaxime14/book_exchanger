@@ -1,0 +1,37 @@
+<% if book.state == 'Available' %> 
+    <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+        <div class="card-header"><strong><small><%= book.state %></small></strong></div>
+        <div class="card-body">
+        <h5 class="card-title"><%= book.title %></h5>
+        <p class="card-text"><%= book.author %></p>
+        </div>
+
+    <%= link_to 'Ver más', book_path(book.id), class: 'btn btn-sm btn-secondary' %>
+        <% if book.state == 'Available' && user_signed_in? && current_user == book.user %> 
+                <%= link_to 'Quiero intercambiarlo!', root_path, class: 'btn btn-sm btn-secondary' %>
+                <%= link_to 'Leído', root_path, class: 'btn btn-sm btn-warning' %>
+                <%= link_to 'Eliminar', destroy_book_path(book), method: :delete, data: { confirm: "Seguro que desea eliminar? (Tenga en cuenta que esta acción no se puede deshacer)", disable_with: "Eliminando..." }, class: 'btn btn-sm btn-dark' %>
+        <% end %>
+        <% if book.state == 'Available' &&  user_signed_in? && current_user != book.user %>
+                <%= link_to 'Quiero leerlo!', root_path, class: 'btn btn-sm btn-secondary' %>
+                <%= link_to 'Leído', root_path, class: 'btn btn-sm btn-warning' %>
+        <% end %>
+    </div>
+<% else %>
+    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+        <div class="card-header"><strong><small><%= book.state %></small></strong></div>
+        <div class="card-body">
+        <h5 class="card-title"><%= book.title %></h5>
+        <p class="card-text"><%= book.author %></p>
+        </div>
+
+        <%= link_to 'Ver más', book_path(book), class: 'btn btn-sm btn-secondary' %>
+        <% if book.state == 'Traded' &&  user_signed_in? && current_user == book.user %> 
+            <%= link_to 'Dejar Disponible!', root_path, class: 'btn btn-sm btn-secondary' %>
+            <%= link_to 'Leído', root_path, class: 'btn btn-sm btn-warning' %>
+        <% end %>
+        <% if book.state == 'Traded' &&  user_signed_in? && current_user != book.user %>
+            <%= link_to 'Leído', root_path, class: 'btn btn-sm btn-warning' %>
+        <% end %>
+    </div>
+<% end %>
