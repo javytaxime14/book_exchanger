@@ -25,7 +25,9 @@ class ExchangesController < ApplicationController
   end
 
   def accepted
+    byebug
     @exchange = Exchange.where(status: '1')
+    @book = Book.where(state: 'Traded')
   end
 
   def rejected
