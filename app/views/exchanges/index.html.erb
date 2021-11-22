@@ -22,11 +22,9 @@
           <td><%= exchange.book2 %></td>
           <td><%= link_to 'Show', exchange %></td>
           <td><%= link_to 'Edit', edit_exchange_path(exchange) %></td>
-          <% if current_user.id == exchange.user_A_id %>
-            <td><%= link_to 'Delete', exchange, :confirm => 'Are you sure?', :method => :delete %></td>
+          <td><%= link_to 'Delete', exchange, :confirm => 'Are you sure?', :method => :delete %></td>
           <% end %>
         </tr>
-      <% end %>
     </tbody>
   </table>
 <% end %>

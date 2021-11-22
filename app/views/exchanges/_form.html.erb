@@ -21,17 +21,21 @@
     </div>
   
 
-  <div class="field">
-    <%= form.label :book1_id %><br/>
-    <%= form.select :book1_id, current_user.books.map { |b| [b.title, b.id] } %>
-  </div>
+    <div class="field">
+      <%= form.label :book1_id %><br/>
+      <%= form.select :book1_id, current_user.books.map { |b| [b.title, b.id] } %>
+    </div>
 
  
     <div class="field">
       <%= form.label :book2_id %><br/>
       <%= form.select :book2_id, Book.all.map { |b| [b.title, b.id] } %>
     </div>
- 
+
+    <div class="field">
+      <%= form.label :status %><br/>
+      <%= form.select :status, Exchange.statuses.keys %>
+    </div>
 
   <div class="actions">
     <%= form.submit "Crear intercambio", class: 'btn btn-primary btn-sm mt-2' %>

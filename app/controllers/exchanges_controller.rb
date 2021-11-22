@@ -4,8 +4,9 @@ class ExchangesController < ApplicationController
 
   # GET /exchanges or /exchanges.json
   def index
-    @exchanges = Exchange.all
+    @exchanges = Exchange.where(user1_id: current_user.id)
   end
+
   # GET /exchanges/1 or /exchanges/1.json
   def show
   end

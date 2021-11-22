@@ -25,8 +25,8 @@
           <p class="card-text"><strong>Nombre:</strong> <%= @user.name %> <%= @user.last_name %></p>
           <p class="card-text"><strong>Email:</strong> <%= @user.email %></p>
           <p class="card-text"><strong>Teléfono:</strong> <%= @user.phone_number %></p>
-          <%= link_to 'Editar', edit_user_registration_path(@user), class: 'btn btn-primary' %>
-          <%= link_to 'Ver perfil', user_path(@user), class: 'btn btn-primary' %>
+          <%= link_to 'Editar', edit_user_registration_path(@user), class: 'btn btn-primary btn-sm' %>
+          <%= link_to 'Ver perfil', user_path(@user), class: 'btn btn-primary btn-sm' %>
         </div>
       </div>
     </div>
@@ -36,14 +36,11 @@
       <div class="card w-50 border-dark">
         <div class="card-body">
           <h5 class="card-title">Libros intercambiados</h5>
-          <%if @user == current_user %>
-            <% @exchanges.each do |exchange| %>
-              <p class="card-text"><%= exchange.book1 %></p>
-              <p class="card-text"><%= exchange.book2 %></p>
-            <% end %>
+          <p class="card-text"> <% @exchanges.each do |exchange| %>
+            <%= link_to exchange.book.title, book_path(exchange.book), class: 'btn btn-primary' %>
           <% end %>
             <hr>
-          <p class="card-text"> <%= link_to 'Ver mis intercambios', exchanges_path, class: 'btn btn-primary' %></p>
+          <p> <%= link_to 'Ver mis intercambios', exchanges_path, class: 'btn btn-primary btn-sm' %> </p>
         </div>
       </div>
     </div>
