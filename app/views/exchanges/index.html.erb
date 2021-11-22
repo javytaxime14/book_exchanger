@@ -17,12 +17,12 @@
     </thead>
 
     <tbody>
-      <% @exchanges.each do |exchange| %>
+      <% @current_user.exchanges.each do |exchange| %>
         <tr>
-          <td><%= exchange.user_A_id %></td>
-          <td><%= exchange.user_b_id %></td>
-          <td><%= exchange.book_A_id %></td>
-          <td><%= exchange.book_B_id %></td>
+          <td><%= exchange.user1_id %></td>
+          <td><%= exchange.user2_id %></td>
+          <td><%= exchange.book1_id %></td>
+          <td><%= exchange.book2_id %></td>
           <td><%= link_to 'Show', exchange %></td>
           <td><%= link_to 'Edit', edit_exchange_path(exchange) %></td>
           <% if current_user.id == exchange.user_A_id %>
