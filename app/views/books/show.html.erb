@@ -115,8 +115,8 @@
 <% if @book.user == current_user %>
   <%= link_to 'Edit', edit_book_path(@book), class: 'btn btn-outline-primary btn-sm mt-2' %> |
   <%= link_to 'Delete', book_path(@book), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger btn-sm mt-2' %>
-  <%= link_to 'Back', books_path, class: 'btn btn-outline-success btn-sm mt-2' %>
+  <%= link_to 'Back', books_path, class: 'btn btn-warning btn-sm mt-2 ml-5' %>
 <% else %>
-  <%= link_to 'Back', books_path, class: 'btn btn-outline-success btn-sm mt-2 pl-5' %>
+  <%= link_to 'Back', books_path, class: 'btn btn-outline-success btn-sm mt-2 ml-5' %>
 <% end %>
 
