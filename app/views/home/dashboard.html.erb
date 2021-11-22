@@ -36,6 +36,13 @@
       <div class="card w-50 border-dark">
         <div class="card-body">
           <h5 class="card-title">Libros intercambiados</h5>
+          <%if @user == current_user %>
+            <% @exchanges.each do |exchange| %>
+              <p class="card-text"><%= exchange.book1 %></p>
+              <p class="card-text"><%= exchange.book2 %></p>
+            <% end %>
+          <% end %>
+            <hr>
           <p class="card-text"> <%= link_to 'Ver mis intercambios', exchanges_path, class: 'btn btn-primary' %></p>
         </div>
       </div>

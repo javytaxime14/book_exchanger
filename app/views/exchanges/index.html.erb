@@ -3,7 +3,7 @@
 
 <% if user_signed_in? %>
   <% if @exchanges.empty? %>
-    <p>No exchanges found yet</p>
+    <p><small>No exchanges found yet</small></p>
   <% else %>
   <table>
     <thead>
@@ -19,10 +19,10 @@
     <tbody>
       <% @current_user.exchanges.each do |exchange| %>
         <tr>
-          <td><%= exchange.user1_id %></td>
-          <td><%= exchange.user2_id %></td>
-          <td><%= exchange.book1_id %></td>
-          <td><%= exchange.book2_id %></td>
+          <td><%= exchange.user1 %></td>
+          <td><%= exchange.user2 %></td>
+          <td><%= exchange.book1 %></td>
+          <td><%= exchange.book2 %></td>
           <td><%= link_to 'Show', exchange %></td>
           <td><%= link_to 'Edit', edit_exchange_path(exchange) %></td>
           <% if current_user.id == exchange.user_A_id %>
@@ -37,4 +37,5 @@
 
 <br>
 
-<%= link_to 'New Exchange', new_exchange_path %>
+<%= link_to 'New Exchange', new_exchange_path, :class => 'btn btn-primary btn-sm' %>  
+<%= link_to 'Back to Home', root_path, :class => 'btn btn-danger btn-sm' %>
