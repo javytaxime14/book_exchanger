@@ -1,0 +1,53 @@
+<div class="row">
+  <div class="col-sm-9">
+    <h1 class="mb-3">Hola <%= @user.name %>!</h1>
+    <h3 class="mb-4">Tu dashboard</h3>
+  </div>
+  <div class="col-sm-3 mt-3">
+    <%= link_to 'Nuevo libro', new_book_path, class: 'btn btn-sm btn-primary' %>
+  </div>
+</div>
+
+<div class="row">
+<div class="col-sm-6">
+    <div class="card border-dark mb-3">
+      <div class="card-body">
+        <h5 class="card-title">Stats</h5>
+        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+        <a href="#" class="btn btn-primary">Go somewhere</a>
+      </div>
+    </div>
+  </div>
+    <div class="col-sm-6">
+      <div class="card w-50 border-dark">
+        <div class="card-body">
+          <h5 class="card-title">Mi información</h5>
+          <p class="card-text"><strong>Nombre:</strong> <%= @user.name %> <%= @user.last_name %></p>
+          <p class="card-text"><strong>Email:</strong> <%= @user.email %></p>
+          <p class="card-text"><strong>Teléfono:</strong> <%= @user.phone_number %></p>
+          <%= link_to 'Editar', edit_user_registration_path(@user), class: 'btn btn-primary' %>
+          <%= link_to 'Ver perfil', user_path(@user), class: 'btn btn-primary' %>
+        </div>
+      </div>
+    </div>
+</div>
+  <div class="row mt-5 ml-5 pl-5">
+    <div class="col-sm-6">
+      <div class="card w-50 border-dark">
+        <div class="card-body">
+          <h5 class="card-title">Libros intercambiados</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="card w-75 border-dark">
+        <div class="card-body">
+          <h5 class="card-title">Libros que quiero leer</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+      </div>
+    </div>
+  </div>

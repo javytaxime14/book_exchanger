@@ -1,0 +1,39 @@
+<%= form_with(model: exchange, local: true) do |form| %>
+  <% if exchange.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(exchange.errors.count, "error") %> prohibited this exchange from being saved:</h2>
+
+      <ul>
+      <% exchange.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div>
+      User 1 : <%= current_user.name %> <br/>
+    </div>
+ 
+    <div class="field">
+      <%= form.label :user2_id %><br/>
+      <%= form.select :user2_id, User.all.map { |u| [u.name, u.id] } %>
+    </div>
+  
+
+  <div class="field">
+    <%= form.label :book1_id %><br/>
+    <%= form.select :book1_id, current_user.books.map { |b| [b.title, b.id] } %>
+  </div>
+
+ 
+    <div class="field">
+      <%= form.label :book2_id %><br/>
+      <%= form.select :book2_id, Book.all.map { |b| [b.title, b.id] } %>
+    </div>
+ 
+
+  <div class="actions">
+    <%= form.submit "Crear intercambio", class: 'btn btn-primary btn-sm mt-2' %>
+  </div>
+<% end %>

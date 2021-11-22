@@ -1,0 +1,40 @@
+
+<h1>Exchanges</h1>
+
+<% if user_signed_in? %>
+  <% if @exchanges.empty? %>
+    <p>No exchanges found yet</p>
+  <% else %>
+  <table>
+    <thead>
+      <tr>
+        <th>User a</th>
+        <th>User b</th>
+        <th>Book a</th>
+        <th>Book b</th>
+        <th colspan="3"></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @exchanges.each do |exchange| %>
+        <tr>
+          <td><%= exchange.user_A_id %></td>
+          <td><%= exchange.user_b_id %></td>
+          <td><%= exchange.book_A_id %></td>
+          <td><%= exchange.book_B_id %></td>
+          <td><%= link_to 'Show', exchange %></td>
+          <td><%= link_to 'Edit', edit_exchange_path(exchange) %></td>
+          <% if current_user.id == exchange.user_A_id %>
+            <td><%= link_to 'Delete', exchange, :confirm => 'Are you sure?', :method => :delete %></td>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
+<% end %>
+
+<br>
+
+<%= link_to 'New Exchange', new_exchange_path %>

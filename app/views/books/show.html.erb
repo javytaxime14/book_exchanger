@@ -40,7 +40,7 @@
             
             <p>
               <strong>Owner:</strong>
-              <%= @book.user.name %>
+              <%= link_to @book.user.name, user_path(@book.user) %>
             </p>
           </div>
         </div>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_A_id: 
+  user_b_id: 
+  book_A_id: 
+  book_B_id: 
+
+two:
+  user_A_id: 
+  user_b_id: 
+  book_A_id: 
+  book_B_id: 

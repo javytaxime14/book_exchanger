@@ -8,12 +8,12 @@
 
     <%= link_to 'Ver más', book_path(book.id), class: 'btn btn-sm btn-secondary' %>
         <% if book.state == 'Available' && user_signed_in? && current_user == book.user %> 
-                <%= link_to 'Quiero intercambiarlo!', root_path, class: 'btn btn-sm btn-secondary' %>
+                <%= link_to 'Quiero intercambiarlo!', new_exchange_path, class: 'btn btn-sm btn-secondary' %>
                 <%= link_to 'Leído', root_path, class: 'btn btn-sm btn-warning' %>
-                <%= link_to 'Eliminar', destroy_book_path(book), method: :delete, data: { confirm: "Seguro que desea eliminar? (Tenga en cuenta que esta acción no se puede deshacer)", disable_with: "Eliminando..." }, class: 'btn btn-sm btn-dark' %>
+                <%= link_to 'Eliminar', destroy_book_path(book), method: :delete, data: { confirm: "Seguro que desea eliminar? (Esta acción no se puede deshacer)", disable_with: "Eliminando..." }, class: 'btn btn-sm btn-dark' %>
         <% end %>
         <% if book.state == 'Available' &&  user_signed_in? && current_user != book.user %>
-                <%= link_to 'Quiero leerlo!', root_path, class: 'btn btn-sm btn-secondary' %>
+                <%= link_to 'Quiero leerlo!', new_exchange_path, class: 'btn btn-sm btn-secondary' %> 
                 <%= link_to 'Leído', root_path, class: 'btn btn-sm btn-warning' %>
         <% end %>
     </div>
@@ -27,7 +27,7 @@
 
         <%= link_to 'Ver más', book_path(book), class: 'btn btn-sm btn-secondary' %>
         <% if book.state == 'Traded' &&  user_signed_in? && current_user == book.user %> 
-            <%= link_to 'Dejar Disponible!', root_path, class: 'btn btn-sm btn-secondary' %>
+            <%= link_to 'Dejar Disponible!', root_path, class: 'btn btn-sm btn-secondary' %> <!---definir---->
             <%= link_to 'Leído', root_path, class: 'btn btn-sm btn-warning' %>
         <% end %>
         <% if book.state == 'Traded' &&  user_signed_in? && current_user != book.user %>
