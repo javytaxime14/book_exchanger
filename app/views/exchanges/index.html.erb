@@ -2,24 +2,21 @@
 <h1>Exchanges</h1>
 
 <% if user_signed_in? %>
-  <% if @exchanges.empty? %>
-    <p><small>No exchanges found yet</small></p>
-  <% else %>
   <table>
     <thead>
       <tr>
-        <th>User a</th>
-        <th>User b</th>
-        <th>Book a</th>
-        <th>Book b</th>
+        <th>User 1</th>
+        <th>User 2</th>
+        <th>Book 1</th>
+        <th>Book 2</th>
         <th colspan="3"></th>
       </tr>
     </thead>
 
     <tbody>
-      <% @current_user.exchanges.each do |exchange| %>
+      <% @exchanges.each do |exchange| %>
         <tr>
-          <td><%= exchange.user1 %></td>
+          <td><%= exchange.current_user %></td>
           <td><%= exchange.user2 %></td>
           <td><%= exchange.book1 %></td>
           <td><%= exchange.book2 %></td>
@@ -32,7 +29,6 @@
       <% end %>
     </tbody>
   </table>
-  <% end %>
 <% end %>
 
 <br>

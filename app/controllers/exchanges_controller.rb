@@ -6,7 +6,6 @@ class ExchangesController < ApplicationController
   def index
     @exchanges = Exchange.all
   end
-
   # GET /exchanges/1 or /exchanges/1.json
   def show
   end
