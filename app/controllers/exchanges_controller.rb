@@ -20,6 +20,18 @@ class ExchangesController < ApplicationController
   def edit
   end
 
+  def pending
+    @exchanges = Exchange.where(status: '0')
+  end
+
+  def accepted
+    @exchange = Exchange.where(status: '1')
+  end
+
+  def rejected
+    @exchange = Exchange.where(status: '2')
+  end
+
   # POST /exchanges or /exchanges.json
   def create
  
