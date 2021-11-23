@@ -28,6 +28,9 @@
     </div>
 <% else %>
     <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+        <% if book.is_listed?(current_user) %>
+            <span class="badge badge-secondary">En lista</span>
+        <% end %>
         <div class="card-header"><strong><small><%= book.state %></small></strong></div>
         <div class="card-body">
         <h5 class="card-title"><%= book.title %></h5>
