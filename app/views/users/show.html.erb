@@ -39,17 +39,16 @@
                             <%= @user.listed_books.count %> libro
                         <% end %>
                     </p>
-                </p>
             </div>
         </div>
     </div>
 </div>
 <br>
 <div class="row my-5">
+    <h5 class="my-3">Libros que <strong><%= @user.name %> <%= @user.last_name %> </strong> quiere leer</h5>
     <% @user.listed_books.each do |book| %>
-        <div class="col-md-6"> 
-            <h5 class="my-3">Libros que <strong><%= @user.name %> <%= @user.last_name %> </strong> quiere leer</h5>
-            <div class="card text-white bg-warning mb-3" style="max-width: 12rem;">
+        <div class="col-md-2"> 
+            <div class="card text-white bg-warning mb-3" style="max-width: 10rem; height: 10rem;">
                 <div class="card-header"><strong><small>I want to read</small></strong></div>
                 <div class="card-body">
                     <h5 class="card-title"><%= book.title %></h5>
@@ -59,4 +58,6 @@
         </div>
     <% end %>
 </div>
+
+<%= link_to 'Volver', books_path, class: 'btn btn-outline-primary btn-sm' %>
 

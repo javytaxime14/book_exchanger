@@ -1,5 +1,9 @@
+
 <% if book.state == 'Available' %> 
     <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+        <% if book.is_listed?(current_user) %>
+            <span class="badge badge-secondary">En lista</span>
+        <% end %>
         <div class="card-header"><strong><small><%= book.state %></small></strong></div>
         <div class="card-body">
         <h5 class="card-title"><%= book.title %></h5>
@@ -16,9 +20,9 @@
                 <%= link_to 'Quiero leerlo!', new_exchange_path, class: 'btn btn-sm btn-secondary' %> 
                 <%= link_to 'Leído', root_path, class: 'btn btn-sm btn-warning' %>
                 <% if book.is_listed?(current_user) %>
-                    <%= link_to "Remove from booklist", book_list_path(book), method: :post %>
+                    <%= link_to "Remove from booklist", book_list_path(book), method: :post, class: 'btn btn-sm btn-danger' %>
                 <% else %> 
-                    <%= link_to "Add to booklist", book_list_path(book), method: :post %>
+                    <%= link_to "Add to booklist", book_list_path(book), method: :post, class: 'btn btn-sm btn-primary' %>
                 <% end %>
         <% end %>
     </div>
@@ -32,11 +36,15 @@
 
         <%= link_to 'Ver más', book_path(book), class: 'btn btn-sm btn-secondary' %>
         <% if book.state == 'Traded' &&  user_signed_in? && current_user == book.user %> 
-            <%= link_to 'Dejar Disponible!', root_path, class: 'btn btn-sm btn-secondary' %> <!---definir---->
             <%= link_to 'Leído', root_path, class: 'btn btn-sm btn-warning' %>
         <% end %>
         <% if book.state == 'Traded' &&  user_signed_in? && current_user != book.user %>
             <%= link_to 'Leído', root_path, class: 'btn btn-sm btn-warning' %>
+            <% if book.is_listed?(current_user) %>
+            <%= link_to "Remove from booklist", book_list_path(book), method: :post, class: 'btn btn-sm btn-danger' %>
+        <% else %> 
+            <%= link_to "Add to booklist", book_list_path(book), method: :post, class: 'btn btn-sm btn-primary' %>
+        <% end %>
         <% end %>
     </div>
 <% end %>
