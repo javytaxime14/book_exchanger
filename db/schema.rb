@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_11_22_202059) do
+=======
+ActiveRecord::Schema.define(version: 2021_11_23_010258) do
+
+  create_table "booklists", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_booklists_on_book_id"
+    t.index ["user_id"], name: "index_booklists_on_user_id"
+  end
+>>>>>>> booklist
 
   create_table "books", force: :cascade do |t|
     t.string "title", null: false

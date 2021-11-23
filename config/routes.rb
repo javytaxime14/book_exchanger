@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :exchanges
   get 'home/dashboard'
-  resources :books
+  resources :books do
+    post 'list', to: 'books#list'
+  end
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations'

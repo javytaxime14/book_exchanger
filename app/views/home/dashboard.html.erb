@@ -48,7 +48,9 @@
       <div class="card w-75 border-dark">
         <div class="card-body">
           <h5 class="card-title">Libros que quiero leer</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <p class="card-text"> <% @user.listed_books.each do |book| %>
+            <%= link_to book.title, book_path(book), class: 'btn btn-primary' %>
+          <% end %>
           <a href="#" class="btn btn-primary">Go somewhere</a>
         </div>
       </div>
