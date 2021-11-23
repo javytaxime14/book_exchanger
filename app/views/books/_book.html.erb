@@ -1,6 +1,6 @@
 
 <% if book.state == 'Available' %> 
-    <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+    <div class="card text-white bg-success mb-2" style="max-width: 18rem;">
         <% if book.is_listed?(current_user) %>
             <span class="badge badge-secondary">En lista</span>
         <% end %>
@@ -9,8 +9,8 @@
         <h5 class="card-title"><%= book.title %></h5>
         <p class="card-text"><%= book.author %></p>
         </div>
-
-    <%= link_to 'Ver más', book_path(book.id), class: 'btn btn-sm btn-secondary' %>
+        <%= link_to 'Ver más', book_path(book.id), class: 'btn btn-sm btn-secondary' %>
+    </div>
         <% if book.state == 'Available' && user_signed_in? && current_user == book.user %> 
                 <%= link_to 'Quiero intercambiarlo!', new_exchange_path, class: 'btn btn-sm btn-secondary' %>
                 <%= link_to 'Leído', root_path, class: 'btn btn-sm btn-warning' %>
@@ -25,9 +25,8 @@
                     <%= link_to "Add to booklist", book_list_path(book), method: :post, class: 'btn btn-sm btn-primary' %>
                 <% end %>
         <% end %>
-    </div>
 <% else %>
-    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+    <div class="card text-white bg-primary mt-4 mb-2" style="max-width: 18rem;">
         <% if book.is_listed?(current_user) %>
             <span class="badge badge-secondary">En lista</span>
         <% end %>
@@ -36,8 +35,8 @@
         <h5 class="card-title"><%= book.title %></h5>
         <p class="card-text"><%= book.author %></p>
         </div>
-
-        <%= link_to 'Ver más', book_path(book), class: 'btn btn-sm btn-secondary' %>
+        <%= link_to 'Ver más', book_path(book.id), class: 'btn btn-sm btn-secondary' %>
+    </div>
         <% if book.state == 'Traded' &&  user_signed_in? && current_user == book.user %> 
             <%= link_to 'Leído', root_path, class: 'btn btn-sm btn-warning' %>
         <% end %>
@@ -49,5 +48,4 @@
             <%= link_to "Add to booklist", book_list_path(book), method: :post, class: 'btn btn-sm btn-primary' %>
         <% end %>
         <% end %>
-    </div>
 <% end %>
