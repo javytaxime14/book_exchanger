@@ -25,9 +25,11 @@ class ExchangesController < ApplicationController
   end
 
   def accepted
-    byebug
     @exchange = Exchange.where(status: '1')
-    @book = Book.where(state: 'Traded')
+    if @exchange.save
+      @book.update(state: 'Traded')
+    end
+    redirect_to exchanges_path
   end
 
   def rejected
