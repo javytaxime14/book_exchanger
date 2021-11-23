@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   before_action :set_book, only: %i[ show edit update destroy ]
+  before_action :set_current_book, only: [:list]
 
   # GET /books or /books.json
   def index
@@ -15,6 +16,14 @@ class BooksController < ApplicationController
     @book = Book.new
   end
 
+  def list
+    if @book.is_listed?(current_user)
+      @book.unlist(current_user)  
+    else
+      @book.list(current_user)
+    end
+    redirect_to books_path
+  end
   # GET /books/1/edit
   def edit
   end
@@ -61,6 +70,11 @@ class BooksController < ApplicationController
     def set_book
       @book = Book.find(params[:id])
     end
+
+    def set_current_book
+      @book = Book.find(params[:book_id])
+    end
+  
 
     # Only allow a list of trusted parameters through.
     def book_params

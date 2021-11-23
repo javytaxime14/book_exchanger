@@ -15,6 +15,11 @@
         <% if book.state == 'Available' &&  user_signed_in? && current_user != book.user %>
                 <%= link_to 'Quiero leerlo!', new_exchange_path, class: 'btn btn-sm btn-secondary' %> 
                 <%= link_to 'Leído', root_path, class: 'btn btn-sm btn-warning' %>
+                <% if book.is_listed?(current_user) %>
+                    <%= link_to "Remove from booklist", book_list_path(book), method: :post %>
+                <% else %> 
+                    <%= link_to "Add to booklist", book_list_path(book), method: :post %>
+                <% end %>
         <% end %>
     </div>
 <% else %>
