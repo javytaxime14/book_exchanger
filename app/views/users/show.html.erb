@@ -3,6 +3,14 @@
 <div class="row mt-2">
     <div class="col-md-4">
         <div class="card">
+        <% if user_signed_in? && current_user != @user %>
+            <% if current_user.is_following?(@user.id) %>
+                <%= link_to 'Unfollow', users_follow_path(@user.id), method: :post, class: 'btn btn-danger btn-sm my-1 mx-1' %>
+            <% else %>
+                <%= link_to 'Follow', users_follow_path(@user.id), method: :post, class: 'btn btn-primary btn-sm my-1 mx-1' %>
+            <% end %>
+        <% end %>
+
             <div class="card-body">
                 <p class="card-text">
                     <strong>Email:</strong>
@@ -11,6 +19,10 @@
                 <p class="card-text">
                     <strong>Teléfono:</strong>
                     <%= @user.phone_number %>
+                </p>
+                <p class="card-text">
+                    <strong>Amigos:</strong>
+                    <%= @user.friends.count%>
                 </p>
             </div>
         </div>

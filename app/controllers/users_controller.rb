@@ -11,6 +11,14 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @books = @user.books
     @exchanges = @user.exchanges
+
+    if user_signed_in? && current_user.id != @user.id 
+      if current_user.is_following?(params[:friend_id])
+        Friend.where(user_id: current_user.id, friend_id: params[:friend_id]).delete_all
+      else
+        Friend.create(user_id: current_user.id, friend_id: params[:friend_id])
+      end
+    end
   end
 
   # GET /users/new
@@ -20,6 +28,15 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+  end
+
+  def follow
+    if current_user.is_following?(params[:friend_id])
+      Friend.where(user_id: current_user.id, friend_id: params[:friend_id]).delete_all
+    else
+      Friend.create(user_id: current_user.id, friend_id: params[:friend_id])
+    end
+    redirect_to root_path
   end
 
   # POST /users or /users.json
