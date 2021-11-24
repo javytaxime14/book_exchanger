@@ -33,7 +33,9 @@
                         <% end %>
                        </p>
                    <p> Quiere leer: 
-                       <% if @user.listed_books.count > 1 %>
+                        <% if @user.listed_books.count == 0 %>
+                            <%= @user.listed_books.count %> libros
+                        <% elsif @user.listed_books.count > 1 %>
                            <%= @user.listed_books.count %> libros
                           <% else %>
                             <%= @user.listed_books.count %> libro
