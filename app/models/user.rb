@@ -8,4 +8,5 @@ class User < ApplicationRecord
          has_many :booklists
          has_many :listed_books, :through => :booklists, :source => :book
          validates :email, :phone_number, uniqueness: true
+         has_many :reviews
 end

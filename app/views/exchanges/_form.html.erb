@@ -12,7 +12,8 @@
   <% end %>
 
     <div>
-      User 1 : <%= current_user.name %> <br/>
+      <%= form.label :user1_id %><br/>
+      <%= form.select :user1_id, User.all.select { |u| u == current_user }.map { |u| [u.name, u.id] } %>
     </div>
  
     <div class="field">

@@ -4,6 +4,7 @@ class Book < ApplicationRecord
   has_many :exchanges, dependent: :destroy
   has_many :booklists
   has_many :listing_users, :through => :booklists, :source => :user
+  has_many :reviews, dependent: :destroy
 
   def is_listed?(user)
     self.listing_users.include?(user)
