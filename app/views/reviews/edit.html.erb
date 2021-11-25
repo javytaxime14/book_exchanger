@@ -1,4 +1,6 @@
-<%= form_for([@book, @book.reviews.build]) do |f| %>
+<h1>Editing Review</h1>
+
+<%= form_for([@book, @review]) do |f| %>
     <div class="form-group">
         <div class="field">
             <%= f.label :rating %><br />
@@ -12,7 +14,6 @@
 
         <div class="actions mt-2">
             <%= f.submit 'Add Review', class: 'btn btn-sm btn-primary' %>
-            <%= link_to 'Back', book_path(@book), class: 'btn btn-sm btn-secondary' %>
         </div>
     </div>
 <% end %>
