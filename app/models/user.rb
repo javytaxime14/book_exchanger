@@ -19,4 +19,5 @@ class User < ApplicationRecord
   def arr_friends_id
     friends.pluck(:friend_id)
   end
+         has_many :reviews
 end

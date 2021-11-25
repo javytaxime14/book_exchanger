@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   resources :exchanges
   get 'home/dashboard'
   resources :books do
+    resources :reviews
     post 'list', to: 'books#list'
   end
   devise_for :users, controllers: {
