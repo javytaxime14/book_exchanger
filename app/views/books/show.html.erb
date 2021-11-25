@@ -7,6 +7,10 @@
               <strong>Author:</strong>
               <%= @book.author %>
             </p>
+
+            <p class="card-text">
+              <strong>Average Rating:</strong>
+              <div class="average-review-rating" data-score=<%= @average_review %>></div>
             
             <p>
               <strong>Description:</strong>
@@ -133,4 +137,13 @@
 <% else %>
   <%= link_to 'Back', books_path, class: 'btn btn-outline-success btn-sm mt-2 ml-5' %>
 <% end %>
-
+<script>
+$('.average-review-rating').raty({
+    readOnly: true,
+    score: function() {
+        return $(this).attr('data-score');
+        
+    },
+    path: '/assets/',
+  });
+</script>

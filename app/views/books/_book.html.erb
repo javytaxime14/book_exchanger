@@ -13,12 +13,12 @@
     </div>
         <% if book.state == 'Available' && user_signed_in? && current_user == book.user %> 
                 <%= link_to 'Quiero intercambiarlo!', new_exchange_path, class: 'btn btn-sm btn-secondary' %>
-                <%= link_to 'Leído', root_path, class: 'btn btn-sm btn-warning' %>
+                <%= link_to 'Calificar', new_book_review_path(book), class: 'btn btn-sm btn-warning' %>
                 <%= link_to 'Eliminar', destroy_book_path(book), method: :delete, data: { confirm: "Seguro que desea eliminar? (Esta acción no se puede deshacer)", disable_with: "Eliminando..." }, class: 'btn btn-sm btn-dark' %>
         <% end %>
         <% if book.state == 'Available' &&  user_signed_in? && current_user != book.user %>
                 <%= link_to 'Quiero leerlo!', new_exchange_path, class: 'btn btn-sm btn-secondary' %> 
-                <%= link_to 'Leído', root_path, class: 'btn btn-sm btn-warning' %>
+                <%= link_to 'Calificar', new_book_review_path(book), class: 'btn btn-sm btn-warning' %>
                 <% if book.is_listed?(current_user) %>
                     <%= link_to "Remove from booklist", book_list_path(book), method: :post, class: 'btn btn-sm btn-danger' %>
                 <% else %> 
@@ -38,14 +38,14 @@
         <%= link_to 'Ver más', book_path(book.id), class: 'btn btn-sm btn-secondary' %>
     </div>
         <% if book.state == 'Traded' &&  user_signed_in? && current_user == book.user %> 
-            <%= link_to 'Leído', root_path, class: 'btn btn-sm btn-warning' %>
+            <%= link_to 'Calificar', new_book_review_path(book), class: 'btn btn-sm btn-warning' %>
         <% end %>
         <% if book.state == 'Traded' &&  user_signed_in? && current_user != book.user %>
-            <%= link_to 'Leído', root_path, class: 'btn btn-sm btn-warning' %>
+            <%= link_to 'Calificar', new_book_review_path(book), class: 'btn btn-sm btn-warning' %>
             <% if book.is_listed?(current_user) %>
-            <%= link_to "Remove from booklist", book_list_path(book), method: :post, class: 'btn btn-sm btn-danger' %>
-        <% else %> 
-            <%= link_to "Add to booklist", book_list_path(book), method: :post, class: 'btn btn-sm btn-primary' %>
-        <% end %>
+                <%= link_to "Remove from booklist", book_list_path(book), method: :post, class: 'btn btn-sm btn-danger' %>
+            <% else %> 
+                <%= link_to "Add to booklist", book_list_path(book), method: :post, class: 'btn btn-sm btn-primary' %>
+            <% end %>
         <% end %>
 <% end %>
