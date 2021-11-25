@@ -11,7 +11,8 @@
             <p class="card-text">
               <strong>Average Rating:</strong>
               <div class="average-review-rating" data-score=<%= @average_review %>></div>
-            
+            </p>
+
             <p>
               <strong>Description:</strong>
               <%= @book.description %>
@@ -77,6 +78,11 @@
           <%= @book.author %>
         </p>
         
+        <p class="card-text">
+          <strong>Average Rating:</strong>
+          <div class="average-review-rating" data-score=<%= @average_review %>></div>
+        </p>
+
         <p>
           <strong>Description:</strong>
           <%= @book.description %>
