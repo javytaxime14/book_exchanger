@@ -1,34 +1,45 @@
 <h1>Books</h1>
 
-<% if user_signed_in? %>
-<div class="row search">
-  <div class="col-md-12">
-    <%= search_form_for @q do |f| %>
-      <div class="field">
-        <%= f.label :title_cont %> <br />
-        <%= f.search_field :title_cont %>
-      </div>
-      <div class="field">
-        <%= f.label :author_cont %> <br />
-        <%= f.search_field :author_cont %>
-      </div>
-      <div class="field">
-        <%= f.label :isbn_cont %> <br />
-        <%= f.search_field :isbn_cont %>
-      </div>
-      <div class="field">
-        <%= f.label :user_name_or_user_last_name_cont %> <br />
-        <%= f.search_field :user_name_or_user_last_name_cont %>
-      <div class="actions">
-        <%= f.submit "search", :class => "btn btn-primary btn-sm mb-4 mt-3 ml-1" %>
-        <%= link_to 'Reset', books_path %>
+
+<div class="row">
+  <div class="col-md-3 offset-md-7">
+    <% if user_signed_in? %>
+      <%= search_form_for @q do |f| %>
+        <div class="field">
+          <%= f.label :title_cont %> <br />
+          <%= f.search_field :title_cont, class: 'form-control' %>
+        </div>
+        <div class="field">
+          <%= f.label :author_cont %> <br />
+          <%= f.search_field :author_cont, class: 'form-control' %>
+        </div>
+        <div class="field">
+          <%= f.label :isbn_cont %> <br />
+          <%= f.search_field :isbn_cont, class: 'form-control' %>
+        </div>
+        <div class="field">
+          <%= f.label :user_name_or_user_last_name_cont %> <br />
+          <%= f.search_field :user_name_or_user_last_name_cont, class: 'form-control' %>
+        </div>
+        <div class="actions">
+          <%= f.submit "search", :class => "btn btn-primary btn-sm mb-4 mt-3" %>
+          <%= link_to 'Reset', books_path, :class => "btn btn-secondary btn-sm mb-4 mt-3 ml-2" %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-6">
+    <% if @q.result.empty? %>
+      <p>No books found.</p>
+    <% else %>
+      <div class="books_list mt-5">
+        <%= render @books %>
       </div>
     <% end %>
   </div>
-<% end %>
-
-<div class="books_list mt-3">
-  <%= render @books %>
 </div>
 
 <%= link_to "Let's add a book!", new_book_path, class: 'btn btn-secondary btn-sm mt-5' %>
