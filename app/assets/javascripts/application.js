@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//= stub active_admin
 //= require rails-ujs
 //= require activestorage
 //= require jquery
