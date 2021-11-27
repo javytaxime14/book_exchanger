@@ -105,6 +105,8 @@ GEM
     duktape (2.6.0.0)
     erubi (1.10.0)
     execjs (2.8.1)
+    faker (2.19.0)
+      i18n (>= 1.6, < 2)
     ffi (1.15.4-x64-mingw32)
     formtastic (4.0.0)
       actionpack (>= 5.2.0)
@@ -256,6 +258,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   duktape
+  faker
   jbuilder (~> 2.5)
   puma (~> 3.11)
   rails (~> 5.2.6)

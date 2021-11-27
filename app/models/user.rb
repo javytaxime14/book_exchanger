@@ -9,7 +9,7 @@ class User < ApplicationRecord
          has_many :listed_books, :through => :booklists, :source => :book
          validates :email, :phone_number, uniqueness: true
          has_many :friends
-
+         has_many :reviews
   
 
   def is_following?(friend_id)
@@ -19,5 +19,5 @@ class User < ApplicationRecord
   def arr_friends_id
     friends.pluck(:friend_id)
   end
-         has_many :reviews
+         
 end
