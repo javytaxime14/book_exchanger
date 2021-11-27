@@ -1,23 +1,28 @@
 
 
 <p>
-  <strong>User a:</strong>
-  <%= @exchange.user1_id %>
+  <strong>User 1:</strong>
+  <%= @exchange.user1.name %> <%= @exchange.user1.last_name %>
 </p>
 
 <p>
-  <strong>User b:</strong>
-  <%= @exchange.user2_id %>
+  <strong>User 2:</strong>
+  <%= @exchange.user2.name %> <%= @exchange.user2.last_name %>
 </p>
 
 <p>
-  <strong>Book a:</strong>
-  <%= @exchange.book1_id %>
+  <strong>Book 1:</strong>
+  <%= @exchange.book1.title %>
 </p>
 
 <p>
-  <strong>Book b:</strong>
-  <%= @exchange.book2_id %>
+  <strong>Book 2:</strong>
+  <%= @exchange.book2.title %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @exchange.status %>
 </p>
 
 <%= link_to 'Edit', edit_exchange_path(@exchange) %> |
