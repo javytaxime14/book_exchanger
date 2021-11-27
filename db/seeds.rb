@@ -54,4 +54,3 @@ end
             )
 end
 
-# Create admin user and admin role
