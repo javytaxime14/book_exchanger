@@ -6,6 +6,7 @@
   <div class="col-sm-3 mt-3">
     <%= link_to 'Nuevo libro', new_book_path, class: 'btn btn-sm btn-primary' %>
     <%=link_to 'Todos los libros', books_path, class: 'btn btn-sm btn-secondary ml-2' %>
+    <%= link_to 'Mis libros', my_books_path, class: 'btn btn-sm btn-dark ml-2' %>
   </div>
 </div>
 
@@ -44,7 +45,7 @@
             con el usuario <strong><%= exchange.user2.name %></strong> <small class="text-muted"><%= exchange.created_at.strftime("%d/%m/%Y") %></small>
           </p>
             <% end %>
-            <p><% if exchange.user2_id == current_user.id && exchange.status == 'accepted' %>
+            <p> <% if exchange.user2_id == current_user.id && exchange.status == 'accepted' %>
               <%= link_to exchange.book2.title, book_path(exchange.book2) %>,  intercambiado por
             <strong><%= link_to exchange.book1.title, book_path(exchange.book1) %></strong> 
             con el usuario <strong><%= exchange.user1.name %></strong> <small class="text-muted"><%= exchange.created_at.strftime("%d/%m/%Y") %></small>

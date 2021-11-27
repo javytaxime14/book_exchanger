@@ -42,9 +42,11 @@
           <td><%= time_ago_in_words(exchange.created_at) %> ago</td>
           <td><%= time_ago_in_words(exchange.updated_at) %> ago</td>
           <td><%= link_to 'Show', exchange %></td>
-          <td><%= link_to 'Edit', edit_exchange_path(exchange) %></td>
-          <td><%= link_to 'Delete', exchange, :confirm => 'Are you sure?', :method => :delete %></td>
+          <td><% if current_user.id == exchange.user1_id || current_user.id == exchange.user2_id %></td>
+            <td><%= link_to 'Edit', edit_exchange_path(exchange) %></td>
+            <td><%= link_to 'Delete', exchange, :confirm => 'Are you sure?', :method => :delete %></td>
           <% end %>
+        <% end %>
         </tr>
     </tbody>
   </table>

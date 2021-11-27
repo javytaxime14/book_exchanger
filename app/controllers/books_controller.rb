@@ -13,6 +13,10 @@ class BooksController < ApplicationController
     end
   end
 
+  def my_books
+    @books = current_user.books.order(created_at: :desc)
+  end
+
   # GET /books/1 or /books/1.json
   def show
     if @book.reviews.empty?
