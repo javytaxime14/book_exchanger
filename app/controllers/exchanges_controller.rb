@@ -7,11 +7,10 @@ class ExchangesController < ApplicationController
     @selected_status = 'All'
     if params[:status].present? && params[:status] != 'All'
       @selected_status = params[:status]
-      @exchanges = Exchange.where('status = ?', params[:status])
-    else  
+      @exchanges = Exchange.where(status: params[:status])
+    else
       @exchanges = Exchange.all
     end
-    
   end
 
   # GET /exchanges/1 or /exchanges/1.json
