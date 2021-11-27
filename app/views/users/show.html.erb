@@ -43,6 +43,7 @@
                         <% else %>
                             <%= @user.books.count %> libros
                         <% end %>
+                        <% link_to 'Ver todos', my_books_path, class: 'btn btn-primary btn-sm', style: 'float: right' %>
                        </p>
                    <p> Quiere leer: 
                         <% if @user.listed_books.count == 0 %>
