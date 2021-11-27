@@ -1,14 +1,22 @@
 
 <h1>Exchanges</h1>
 
-<% if user_signed_in? %>
-  <table>
+
+<form action="" class="my-5 offset-md-9">
+  <%= select_tag :status, options_for_select([['All', ''], ['Accepted', 'accepted'], ['Pending', 'pending'], ['Rejected', 'rejected']], params[:status]) %>
+  <input type="submit" value="Buscar" class="btn btn-danger btn-sm">
+</form>
+
+  <table class="table table-danger table-striped table-hover">
     <thead>
       <tr>
         <th>User 1</th>
         <th>User 2</th>
         <th>Book 1</th>
         <th>Book 2</th>
+        <th>Status</th>
+        <th>Created at</th>
+        <th>Updated at</th>
         <th colspan="3"></th>
       </tr>
     </thead>
@@ -16,10 +24,23 @@
     <tbody>
       <% @exchanges.each do |exchange| %>
         <tr>
-          <td><%= exchange.current_user %></td>
-          <td><%= exchange.user2 %></td>
-          <td><%= exchange.book1 %></td>
-          <td><%= exchange.book2 %></td>
+          <td><% if exchange.user1_id == current_user.id %> 
+            <strong><%= exchange.user1.name %> <%= exchange.user1.last_name %></strong>
+          <% else %>
+            <%= exchange.user1.name %> <%= exchange.user1.last_name %>
+          </td>
+            <% end %>
+          <td> <% if exchange.user2_id == current_user.id %> 
+            <strong><%= exchange.user2.name %> <%= exchange.user2.last_name %></strong>
+          <% else %>
+            <%= exchange.user2.name %> <%= exchange.user2.last_name %>  
+          </td>
+            <% end %>
+          <td><%= exchange.book1.title %></td>
+          <td><%= exchange.book2.title %></td>
+          <td><%= exchange.status %></td>
+          <td><%= time_ago_in_words(exchange.created_at) %> ago</td>
+          <td><%= time_ago_in_words(exchange.updated_at) %> ago</td>
           <td><%= link_to 'Show', exchange %></td>
           <td><%= link_to 'Edit', edit_exchange_path(exchange) %></td>
           <td><%= link_to 'Delete', exchange, :confirm => 'Are you sure?', :method => :delete %></td>
@@ -27,7 +48,7 @@
         </tr>
     </tbody>
   </table>
-<% end %>
+
 
 <br>
 

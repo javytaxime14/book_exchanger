@@ -1,4 +1,5 @@
 class BooksController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
   before_action :set_book, only: %i[ show edit update destroy ]
   before_action :set_current_book, only: [:list]
 
@@ -24,6 +25,7 @@ class BooksController < ApplicationController
   # GET /books/new
   def new
     @book = Book.new
+    @book.id = params[:book_id]
   end
 
   def list

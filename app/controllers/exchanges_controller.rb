@@ -4,7 +4,14 @@ class ExchangesController < ApplicationController
 
   # GET /exchanges or /exchanges.json
   def index
-    @exchanges = Exchange.where(user1_id: current_user.id)
+    @selected_status = 'All'
+    if params[:status].present? && params[:status] != 'All'
+      @selected_status = params[:status]
+      @exchanges = Exchange.where('status = ?', params[:status])
+    else  
+      @exchanges = Exchange.all
+    end
+    
   end
 
   # GET /exchanges/1 or /exchanges/1.json
@@ -27,7 +34,8 @@ class ExchangesController < ApplicationController
   def accepted
     @exchange = Exchange.where(status: '1')
     if @exchange.save
-      @book.update(state: 'Traded')
+      @book1.update(state: '1')
+      @book2.update(state: '1')      
     end
     redirect_to exchanges_path
   end
@@ -39,11 +47,9 @@ class ExchangesController < ApplicationController
   # POST /exchanges or /exchanges.json
   def create
  
-    @book = Book.find(params[:book_id])
-    @book = Book.find(params[:book_id])
-
-    @exchange = @book.exchange.new(user1_id: current_user.id, user2_id: @book2.user_id, book1_id: params[:book1_id], book2_id: params[:book2_id])
-  
+    @book1 = Book.find_by(id: params[:exchange][:book1_id])
+    @book2 = Book.find_by(id: params[:exchange][:book2_id])
+    @exchange = Exchange.new(exchange_params)
 
 
     respond_to do |format|
@@ -87,6 +93,6 @@ class ExchangesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def exchange_params
-      params.require(:exchange).permit(:user1_id, :user2_id, :book1_id, :book2_id)
+      params.require(:exchange).permit(:user1_id, :user2_id, :book1_id, :book2_id, :status)
     end
 end

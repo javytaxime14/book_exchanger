@@ -1,10 +1,10 @@
 class HomeController < ApplicationController
   def dashboard
     @user = current_user
-    @exchanges = Exchange.where(user1_id: current_user.id) if user_signed_in?
+    @exchanges = Exchange.all
 
-    if current_user 
-      render :dashboard
+    if user_signed_in?
+      render 'dashboard'
     else
       redirect_to '/books'
     end
