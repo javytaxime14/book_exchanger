@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   resources :friends
   resources :exchanges
+  get 'home/home_page'
   get 'home/dashboard'
   resources :books do
     resources :reviews
