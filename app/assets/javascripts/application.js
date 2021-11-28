@@ -16,5 +16,7 @@
 //= require jquery
 //= require jquery.raty
 //= require turbolinks
+//= require chartkick
+//= require highcharts
 //= require_tree .
 

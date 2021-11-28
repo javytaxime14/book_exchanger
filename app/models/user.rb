@@ -10,7 +10,7 @@ class User < ApplicationRecord
          validates :email, :phone_number, uniqueness: true
          has_many :friends
          has_many :reviews
-  
+     
 
   def is_following?(friend_id)
     self.friends.where(:friend_id => friend_id).exists?

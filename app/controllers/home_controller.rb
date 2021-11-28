@@ -3,6 +3,8 @@ class HomeController < ApplicationController
     @user = current_user
     @exchanges = Exchange.all
 
+    
+
     if user_signed_in?
       render 'dashboard'
     else

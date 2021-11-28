@@ -4,5 +4,7 @@ class Exchange < ApplicationRecord
     belongs_to :book1, class_name: 'Book', foreign_key: 'book1_id'
     belongs_to :book2, class_name: 'Book', foreign_key: 'book2_id'
     enum status: [:pending, :accepted, :rejected]
+   
+   
     
 end

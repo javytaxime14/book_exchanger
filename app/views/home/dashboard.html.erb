@@ -15,8 +15,11 @@
     <div class="card border-dark mb-3">
       <div class="card-body">
         <h5 class="card-title">Stats</h5>
-        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-        <a href="#" class="btn btn-primary">Go somewhere</a>
+        <p class="card-text">
+          <strong>Intercambios entre usuarios:</strong>
+          <%= pie_chart @exchanges.group_by(&:status).map { |k, v| [k, v.count] }, height: '200px' %>
+        <p class="card-text"> Estado de tus libros: <%= pie_chart @user.books.group(:state).count, { height: '200px', width: '100%' } %>
+
       </div>
     </div>
   </div>
