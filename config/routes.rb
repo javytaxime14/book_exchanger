@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
   resources :users, only: [:index, :show]
-  get 'my_books', to: 'books#my_books'
+  get 'my_books/:user_id', to: 'books#my_books', as: 'my_books'
   root 'home#dashboard'
   post 'follow/:friend_id', to: 'users#follow', as: 'users_follow'
   delete 'delete/:book_id', to: 'books#destroy', as: 'destroy_book'

@@ -7,6 +7,8 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') 
+
 # Create users
 5.times do
     User.create(
@@ -54,4 +56,3 @@ end
             )
 end
 
-AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?

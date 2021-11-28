@@ -42,12 +42,17 @@
               <strong>State:</strong>
               <%= @book.state %>
             </p>
+            <p>
+              <strong>Owner:</strong>
+              <%= link_to @book.user.name, user_path(@book.user.id) %>
+            </p>
+          </div>
           </div>
         </div>
-        <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
-          <div class="card-header"><strong><small>Reviews</small></strong></div>
+        <div class="card text-white bg-danger mb-3 ml-5" style="max-width: 18rem;">
+          <div class="card-header"><strong><small><%= @book.title %> Reviews</small></strong></div>
           <div class="card-body">
-            <%= render @book.reviews %>
+            <p><em><%= render @book.reviews %> </em></p>
           </div>
     </div>
 
@@ -107,11 +112,10 @@
           <strong>State:</strong>
           <%= @book.state %>
         </p>
-      </div>
     </div>
 
     <div class="card text-white bg-danger mb-3" style="max-width: 18rem;">
-        <div class="card-header"><strong><small>Reviews</small></strong></div>
+        <div class="card-header"><strong><small><%= @book.title %> Reviews</small></strong></div>
         <div class="card-body">
           <%= render @book.reviews %>
         </div>

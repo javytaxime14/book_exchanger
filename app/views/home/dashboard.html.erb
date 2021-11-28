@@ -6,7 +6,7 @@
   <div class="col-sm-3 mt-3">
     <%= link_to 'Nuevo libro', new_book_path, class: 'btn btn-sm btn-primary' %>
     <%=link_to 'Todos los libros', books_path, class: 'btn btn-sm btn-secondary ml-2' %>
-    <%= link_to 'Mis libros', my_books_path, class: 'btn btn-sm btn-dark ml-2' %>
+    <%= link_to 'Mis libros', my_books_path(@user), class: 'btn btn-sm btn-secondary ml-2' %>
   </div>
 </div>
 
@@ -18,7 +18,7 @@
         <p class="card-text">
           <strong>Intercambios entre usuarios:</strong>
           <%= pie_chart @exchanges.group_by(&:status).map { |k, v| [k, v.count] }, height: '200px' %>
-        <p class="card-text"> Estado de tus libros: <%= pie_chart @user.books.group(:state).count, { height: '200px', width: '100%' } %>
+        <p class="card-text"><strong>Estado de tus libros: </strong><%= pie_chart @user.books.group(:state).count, { height: '200px', width: '100%' } %>
 
       </div>
     </div>

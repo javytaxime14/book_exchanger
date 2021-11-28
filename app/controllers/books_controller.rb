@@ -14,7 +14,8 @@ class BooksController < ApplicationController
   end
 
   def my_books
-    @books = current_user.books.order(created_at: :desc)
+    @user = User.find(params[:user_id])
+    @books = @user.books
   end
 
   # GET /books/1 or /books/1.json

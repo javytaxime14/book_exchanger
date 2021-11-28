@@ -27,7 +27,7 @@
           <td><% if exchange.user1_id == current_user.id %> 
             <strong><%= exchange.user1.name %> <%= exchange.user1.last_name %></strong>
           <% else %>
-            <%= exchange.user1.name %> <%= exchange.user1.last_name %>
+            <%= link_to exchange.user1.name, user_path(exchange.user1.id) %> <%= link_to exchange.user1.last_name, user_path(exchange.user1.id) %>
           </td>
             <% end %>
           <td> <% if exchange.user2_id == current_user.id %> 
