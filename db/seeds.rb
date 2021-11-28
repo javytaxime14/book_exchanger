@@ -12,7 +12,7 @@
     User.create(
             name: Faker::Name.first_name, 
             last_name: Faker::Name.last_name,
-            phone_number: rand(1000000000..9999999999),
+            phone_number: rand(10000000..99999999),
             email: Faker::Internet.email,
             password: '123456',
             password_confirmation: '123456')
