@@ -5,11 +5,11 @@ class BooksController < ApplicationController
 
   # GET /books or /books.json
   def index
-    @q = Book.ransack(params[:q])
+    @q = Book.page(params[:page]).per(8).ransack(params[:q])
     @books = @q.result
 
     if params[:q].blank?
-      @books = Book.all
+      @books = Book.page(params[:page]).per(8)
     end
   end
 

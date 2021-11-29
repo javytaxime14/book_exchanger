@@ -1,0 +1,19 @@
+<header class="hero pt-5 mt-5">
+<!---------image here-------->
+</header>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 mt-4">
+                <h1 class="mt-3"> Tu nuevo lugar de lectura</h1>
+                    <p> Encuentra nuevos libros cada día, intercambia los que ya hayas leído<br /> 
+                    y conecta con gente que comparte tu pasión</p>
+            </div>
+            <div class="col-md-4">
+                <%= link_to 'Inicia sesión', new_user_session_path, class: 'btn btn-primary btn-sm', id: 'btn-login', style: 'margin-top: 20px; float: left; margin-left: 40px;' %>
+                <%= link_to 'Únete ahora', new_user_registration_path, class: 'btn btn-secondary btn-sm', id: 'btn-signup', style: 'margin-top: 20px; float: right;' %>
+            </div>
+        </div>
+    </div>
+</section>
