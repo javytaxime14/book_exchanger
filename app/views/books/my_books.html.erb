@@ -29,6 +29,7 @@
     <% end %>
 </div>
 
+
 <% if current_user == @user %>
   <%= link_to 'Agregar libro', new_book_path, class: 'btn btn-primary btn-sm' %>
   <%= link_to 'Todos los libros', books_path, class: 'btn btn-primary btn-sm' %>
@@ -38,5 +39,12 @@
   <%= link_to 'Todos los libros', books_path, class: 'btn btn-primary btn-sm' %>
   <%= link_to 'Home', root_path, class: 'btn btn-primary btn-sm' %>
 <% end %>
+
+<div class="row">
+  <div class="col-md-8 offset-md-3 mt-3 mb-3">
+    <%= paginate @books %>
+    <%= link_to_next_page @books, 'Mostrar más' %>
+  </div>
+</div>
 
 

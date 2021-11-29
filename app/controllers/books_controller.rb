@@ -15,7 +15,7 @@ class BooksController < ApplicationController
 
   def my_books
     @user = User.find(params[:user_id])
-    @books = @user.books
+    @books = @user.books.page(params[:page]).per(9)
   end
 
   # GET /books/1 or /books/1.json

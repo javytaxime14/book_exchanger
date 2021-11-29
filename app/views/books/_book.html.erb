@@ -1,6 +1,6 @@
 
 <% if book.state == 'Available' %> 
-    <div class="card text-white bg-success mb-2" style="max-width: 18rem;">
+    <div class="card text-white bg-success mb-2 mt-4" style="max-width: 18rem;">
         <% if book.is_listed?(current_user) %>
             <span class="badge badge-secondary">En lista</span>
         <% end %>
