@@ -7,9 +7,9 @@ class ExchangesController < ApplicationController
     @selected_status = 'All'
     if params[:status].present? && params[:status] != 'All'
       @selected_status = params[:status]
-      @exchanges = Exchange.where(status: params[:status])
+      @exchanges = Exchange.where(status: params[:status]).page(params[:page]).per(10)
     else
-      @exchanges = Exchange.all
+      @exchanges = Exchange.page(params[:page]).per(10)
     end
   end
 
