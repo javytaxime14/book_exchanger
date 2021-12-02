@@ -6,10 +6,8 @@ $(document).on 'turbolinks:load', ->
   $('.review-rating').raty
     path: '/assets',
     readOnly: true,
-    half: true,
-    halfShow: true,
     score: ->
       $(this).attr('data-score')
-  return
+ $('.review-rating').raty('reload')
 
    

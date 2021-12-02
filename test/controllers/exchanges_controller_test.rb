@@ -17,7 +17,7 @@ class ExchangesControllerTest < ActionDispatch::IntegrationTest
 
   test "should create exchange" do
     assert_difference('Exchange.count') do
-      post exchanges_url, params: { exchange: { book_A_id: @exchange.book_A_id, book_B_id: @exchange.book_B_id, user_A_id: @exchange.user_A_id, user_b_id: @exchange.user_b_id } }
+      post exchanges_url, params: { exchange: { book1_id: @exchange.book1_id, book2_id: @exchange.book2_id, user1_id: @exchange.user1_id, user2_id: @exchange.user2_id } }
     end
 
     assert_redirected_to exchange_url(Exchange.last)
@@ -34,7 +34,7 @@ class ExchangesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update exchange" do
-    patch exchange_url(@exchange), params: { exchange: { book_A_id: @exchange.book_A_id, book_B_id: @exchange.book_B_id, user_A_id: @exchange.user_A_id, user_b_id: @exchange.user_b_id } }
+    patch exchange_url(@exchange), params: { exchange: { book1_id: @exchange.book1_id, book2_id: @exchange.book2_id, user1_id: @exchange.user1_id, user2_id: @exchange.user2_id } }
     assert_redirected_to exchange_url(@exchange)
   end
 

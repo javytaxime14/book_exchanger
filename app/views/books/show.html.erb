@@ -1,71 +1,67 @@
 <% if @book.state == 'Available' %> 
-    <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
-        <div class="card-header"><strong><small><%= @book.state %></small></strong></div>
-          <div class="card-body">
-            <h5 class="card-title"><%= @book.title %></h5>
-            <p class="card-text mt-4">
-              <strong>Author:</strong>
-              <%= @book.author %>
-            </p>
+      <div class="card text-white bg-success mb-3" style="max-width: 18rem;">
+          <div class="card-header"><strong><small><%= @book.state %></small></strong></div>
+            <div class="card-body">
+              <h5 class="card-title"><%= @book.title %></h5>
+              <p class="card-text mt-4">
+                <strong>Author:</strong>
+                <%= @book.author %>
+              </p>
 
-            <p class="card-text">
-              <strong>Average Rating:</strong>
-              <div class="average-review-rating" data-score=<%= @average_review %>></div>
-            </p>
+              <p class="card-text">
+                <strong>Average Rating:</strong>
+                <div class="average-review-rating" data-score=<%= @average_review %>></div>
+              </p>
 
-            <p>
-              <strong>Description:</strong>
-              <%= @book.description %>
-            </p>
-            
-            <p>
-              <strong>Genre:</strong>
-              <%= @book.genre %>
-            </p>
-            
-            <p>
-              <strong>Publisher:</strong>
-              <%= @book.publisher %>
-            </p>
-            
-            <p>
-              <strong>Year:</strong>
-              <%= @book.year %>
-            </p>
-            
-            <p>
-              <strong>Isbn:</strong>
-              <%= @book.isbn %>
-            </p>
-            
-            <p>
-              <strong>State:</strong>
-              <%= @book.state %>
-            </p>
-            <p>
-              <strong>Owner:</strong>
-              <%= link_to @book.user.name, user_path(@book.user.id) %>
-            </p>
+              <p>
+                <strong>Description:</strong>
+                <%= @book.description %>
+              </p>
+              
+              <p>
+                <strong>Genre:</strong>
+                <%= @book.genre %>
+              </p>
+              
+              <p>
+                <strong>Publisher:</strong>
+                <%= @book.publisher %>
+              </p>
+              
+              <p>
+                <strong>Year:</strong>
+                <%= @book.year %>
+              </p>
+              
+              <p>
+                <strong>Isbn:</strong>
+                <%= @book.isbn %>
+              </p>
+              
+              <p>
+                <strong>State:</strong>
+                <%= @book.state %>
+              </p>
+            </div>
+            </div>
           </div>
-          </div>
-        </div>
-        <div class="card text-white bg-danger mb-3 ml-5" style="max-width: 18rem;">
-          <div class="card-header"><strong><small><%= @book.title %> Reviews</small></strong></div>
-          <div class="card-body">
-            <p><em><%= render @book.reviews %> </em></p>
-          </div>
-    </div>
+          <div class="card text-white bg-danger mb-3 ml-5" style="max-width: 18rem;">
+            <div class="card-header"><strong><small><%= @book.title %> Reviews</small></strong></div>
+            <div class="card-body">
+              <p><em><%= render @book.reviews %> </em></p>
+            </div>
+      </div>
 
-        <% if @book.state == 'Available' && user_signed_in? && current_user == @book.user %> 
-                <%= link_to 'Quiero intercambiarlo!', new_exchange_path, class: 'btn btn-sm btn-secondary' %>
-                <%= link_to 'Calificar', new_book_review_path(@book), class: 'btn btn-sm btn-warning' %>
-                <%= link_to 'Eliminar', destroy_book_path(@book), method: :delete, data: { confirm: "Seguro que desea eliminar? (Tenga en cuenta que esta acción no se puede deshacer)", disable_with: "Eliminando..." }, class: 'btn btn-sm btn-dark' %>
-        <% end %>
-        <% if @book.state == 'Available' &&  user_signed_in? && current_user != @book.user %>
-                <%= link_to 'Quiero leerlo!', new_exchange_path, class: 'btn btn-sm btn-secondary' %>
-                <%= link_to 'Calificar', new_book_review_path(@book), class: 'btn btn-sm btn-warning' %>
-        <% end %>
-    </div>
+          <% if @book.state == 'Available' && user_signed_in? && current_user == @book.user %> 
+                  <%= link_to 'Quiero intercambiarlo!', new_exchange_path, class: 'btn btn-sm btn-secondary' %>
+                  <%= link_to 'Calificar', new_book_review_path(@book), class: 'btn btn-sm btn-warning' %>
+                  <%= link_to 'Eliminar', destroy_book_path(@book), method: :delete, data: { confirm: "Seguro que desea eliminar? (Tenga en cuenta que esta acción no se puede deshacer)", disable_with: "Eliminando..." }, class: 'btn btn-sm btn-dark' %>
+          <% end %>
+          <% if @book.state == 'Available' &&  user_signed_in? && current_user != @book.user %>
+                  <%= link_to 'Quiero leerlo!', new_exchange_path, class: 'btn btn-sm btn-secondary' %>
+                  <%= link_to 'Calificar', new_book_review_path(@book), class: 'btn btn-sm btn-warning' %>
+          <% end %>
+      </div>
 
 <% else %>
 
