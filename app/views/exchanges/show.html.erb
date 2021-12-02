@@ -1,29 +1,30 @@
+<div class = "container">
 
+  <p>
+    <strong>User 1:</strong>
+    <%= @exchange.user1.name %> <%= @exchange.user1.last_name %>
+  </p>
 
-<p>
-  <strong>User 1:</strong>
-  <%= @exchange.user1.name %> <%= @exchange.user1.last_name %>
-</p>
+  <p>
+    <strong>User 2:</strong>
+    <%= @exchange.user2.name %> <%= @exchange.user2.last_name %>
+  </p>
 
-<p>
-  <strong>User 2:</strong>
-  <%= @exchange.user2.name %> <%= @exchange.user2.last_name %>
-</p>
+  <p>
+    <strong>Book 1:</strong>
+    <%= @exchange.book1.title %>
+  </p>
 
-<p>
-  <strong>Book 1:</strong>
-  <%= @exchange.book1.title %>
-</p>
+  <p>
+    <strong>Book 2:</strong>
+    <%= @exchange.book2.title %>
+  </p>
 
-<p>
-  <strong>Book 2:</strong>
-  <%= @exchange.book2.title %>
-</p>
+  <p>
+    <strong>Status:</strong>
+    <%= @exchange.status %>
+  </p>
 
-<p>
-  <strong>Status:</strong>
-  <%= @exchange.status %>
-</p>
-
-<%= link_to 'Edit', edit_exchange_path(@exchange) %> |
-<%= link_to 'Back', exchanges_path %>
+  <%= link_to 'Edit', edit_exchange_path(@exchange) %> |
+  <%= link_to 'Back', exchanges_path %>
+</div>

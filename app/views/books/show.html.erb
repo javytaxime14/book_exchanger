@@ -1,16 +1,28 @@
-<% if @book.state == 'Available' %> 
-    <%= render 'available' %>     
-<% else %>
-    <%= render 'traded' %>
-<% end %>
+<div class="container">
+
+  <div class ="row">
+    <div class ="col-md-6">
+      <%= image_tag '2.png', width: '100%', position: 'relative', class: 'img-fluid' %>
+    </div>
+    <div class ="col-md-6">
+      <% if @book.state == 'Available' %> 
+          <%= render 'available' %>     
+      <% else %>
+          <%= render 'traded' %>
+      <% end %>
+    </div>
+  </div>
+
+  
+  <% if @book.user == current_user %>
+        <%= link_to 'Edit', edit_book_path(@book), class: 'btn btn-outline-primary btn-sm mt-2' %> |
+        <%= link_to 'Back', books_path, class: 'btn btn-warning btn-sm mt-2 ml-5' %>
+      <% else %>
+        <%= link_to 'Back', books_path, class: 'btn btn-outline-success btn-sm mt-2 ml-5' %>
+      <% end %>
+</div>
 
 
-<% if @book.user == current_user %>
-  <%= link_to 'Edit', edit_book_path(@book), class: 'btn btn-outline-primary btn-sm mt-2' %> |
-  <%= link_to 'Back', books_path, class: 'btn btn-warning btn-sm mt-2 ml-5' %>
-<% else %>
-  <%= link_to 'Back', books_path, class: 'btn btn-outline-success btn-sm mt-2 ml-5' %>
-<% end %>
 <script>
 $('.average-review-rating').raty({
     readOnly: true,

@@ -1,32 +1,37 @@
-<h1>Books</h1>
+<div class="container">
+  <h1>Books</h1>
 
-<%= link_to "Let's add a book!", new_book_path, class: 'btn btn-secondary btn-sm mt-5', style: 'float: left;' %>
-
-<div class="row">
-  <div class="col-md-3 offset-md-7">
-    <% if user_signed_in? %>
-      <h4>Looking for a book?</h4>
-      <div class="form-group">
-        <%= render '_search_form' %>
-      </div>
-    <% end %>
+  <div class="row">
+    <div class="col-md-3 offset-md-7">
+      <% if user_signed_in? %>
+        <h4>Looking for a book?</h4>
+        <div class="form-group">
+          <%= render '_search_form' %>
+        </div>
+      <% end %>
+    </div>
   </div>
-</div>
 
-<div class="row">
-  <div class="col-md-6">
-    <div class="books_list mt-5">
-      <%= render @books %>
+  <div class="row">
+    <div class="col-md-5">
+      <div class="books_list mt-5">
+        <%= render @books %>
+      </div>
+    </div>
+    <div class="col-md-7">
+      <div class="mt-5 pt-5">
+        <%= image_tag '4.png', class: 'img-fluid', alt: 'books', style: 'width: 100%; float: center;' %>
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-8 offset-md-5 mt-3">
+      <%= paginate @books %>
+      <%= link_to_next_page @books, 'Mostrar más' %>
     </div>
   </div>
 </div>
 
-<div class="row">
-  <div class="col-md-8 offset-md-5 mt-3">
-    <%= paginate @books %>
-    <%= link_to_next_page @books, 'Mostrar más' %>
-  </div>
-</div>
-
+<%= link_to "Let's add a book!", new_book_path, class: 'btn btn-secondary btn-sm mt-5', style: 'float: left;' %>
 
 
