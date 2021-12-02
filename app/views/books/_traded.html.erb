@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="card text-white bg-primary mb-3" style="max-width: 18rem;">
+        <div class="card-header"><strong><small><%= @book.state %></small></strong></div>
+        <div class="card-body">
+            <h5 class="card-title"><%= @book.title %></h5>
+            <p class="card-text mt-4">
+            <strong>Author:</strong>
+            <%= @book.author %>
+            </p>
+
+            <p class="card-text">
+            <strong>Average Rating:</strong>
+            <div class="average-review-rating" data-score=<%= @average_review %>></div>
+            </p>
+
+            <p>
+            <strong>Description:</strong>
+            <%= @book.description %>
+            </p>
+            
+            <p>
+            <strong>Genre:</strong>
+            <%= @book.genre %>
+            </p>
+            
+            <p>
+            <strong>Publisher:</strong>
+            <%= @book.publisher %>
+            </p>
+            
+            <p>
+            <strong>Year:</strong>
+            <%= @book.year %>
+            </p>
+            
+            <p>
+            <strong>Isbn:</strong>
+            <%= @book.isbn %>
+            </p>
+            
+            <p>
+            <strong>State:</strong>
+            <%= @book.state %>
+            </p>
+        </div>
+        </div>
+    
+        <div class="card text-white bg-danger mb-3 ml-5" style="max-width: 18rem;">
+            <div class="card-header"><strong><small><%= @book.title %> Reviews</small></strong></div>
+                <div class="card-body">
+                    <p><em><%= render @book.reviews %> </em></p>
+                </div>
+        </div>
+
+        <% if @book.state == 'Traded' &&  user_signed_in? && current_user == @book.user %> 
+            <%= link_to 'Dejar Disponible!', root_path, class: 'btn btn-sm btn-secondary' %>
+            <%= link_to 'Calificar', new_book_review_path(@book), class: 'btn btn-sm btn-warning' %>
+        <% end %>
+        <% if @book.state == 'Traded' &&  user_signed_in? && current_user != @book.user %>
+        <%= link_to 'Calificar', new_book_review_path(@book), class: 'btn btn-sm btn-warning' %>
+        <% end %>
+    </div>
+</div>
