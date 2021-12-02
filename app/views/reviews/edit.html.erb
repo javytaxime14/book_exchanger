@@ -1,22 +1,24 @@
-<h1>Editing Review</h1>
+<div class="container">
+    <h1>Editing Review</h1>
 
-<%= form_for([@book, @review]) do |f| %>
-    <div class="form-group">
-        <div class="field" id="rating-form">
-            <%= f.label :rating %><br />
-        </div>
-        <br />
-        <div class="field">
-            <%= f.label :comment %><br />
-            <%= f.text_area :comment, class: 'form-control form-control-sm' %>
-        </div>
+    <%= form_for([@book, @review]) do |f| %>
+        <div class="form-group">
+            <div class="field" id="rating-form">
+                <%= f.label :rating %><br />
+            </div>
+            <br />
+            <div class="field">
+                <%= f.label :comment %><br />
+                <%= f.text_area :comment, class: 'form-control form-control-sm' %>
+            </div>
 
-        <div class="actions mt-2">
-            <%= f.submit 'Update Review', class: 'btn btn-sm btn-primary' %>
-            <%= link_to 'Back', book_path(@book), class: 'btn btn-sm btn-secondary' %>
+            <div class="actions mt-2">
+                <%= f.submit 'Update Review', class: 'btn btn-sm btn-danger' %>
+                <%= link_to 'Back', book_path(@book), class: 'btn btn-sm btn-secondary' %>
+            </div>
         </div>
-    </div>
-<% end %>
+    <% end %>
+</div>
 
 <script>
     $('#rating-form').raty({
