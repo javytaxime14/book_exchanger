@@ -20,6 +20,8 @@ AdminUser.create!(email: 'admin@example.com', password: 'password', password_con
             password_confirmation: '123456')
 end
 
+puts "Created #{User.count} users"
+
 # Create 
 100.times do
     Book.create(
@@ -34,9 +36,10 @@ end
             user_id: [1,2,3,4,5].sample
             )
 end
+puts "Created #{Book.count} books"
 
 # Create exchanges
-10.times do
+15.times do
     Exchange.create(
             book1_id: rand(1..100),
             book2_id: rand(1..100),
@@ -45,6 +48,8 @@ end
             status: rand(0..2)
             )
 end
+
+puts "Created #{Exchange.count} exchanges"
 
 # Create reviews
 263.times do
@@ -56,3 +61,4 @@ end
             )
 end
 
+puts "Created #{Review.count} reviews"

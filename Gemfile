@@ -63,3 +63,8 @@ gem 'activeadmin'
 gem 'faker'
 gem 'chartkick'
 gem 'kaminari'
+
+gem 'omniauth'
+gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
+gem 'omniauth-rails_csrf_protection'
+gem 'activerecord-session_store'
