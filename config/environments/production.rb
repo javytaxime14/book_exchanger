@@ -72,13 +72,12 @@ Rails.application.configure do
 
    # Code for Sendgrid
 ActionMailer::Base.smtp_settings = {
-  :user_name => Rails.application.credentials.dig(:sendgrid, :user_name),
-  :password =>  Rails.application.credentials.dig(:sendgrid, :password),
+  :user_name => Rails.application.credentials.dig(:sendgrid, :sendgrid_user_name),
+  :password =>  Rails.application.credentials.dig(:sendgrid, :sendgrid_password),
   :domain => 'heroku.com', 
   :address => 'smtp.sendgrid.net',
   :port => 587,
-  :authentication => :plain,
-  :enable_starttls_auto => true
+  :authentication => :plain
 }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: 'http://my_book_exchanger.herokuapp.com' }
