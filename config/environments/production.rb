@@ -74,7 +74,7 @@ Rails.application.configure do
 ActionMailer::Base.smtp_settings = {
   :user_name => Rails.application.credentials.dig(:sendgrid, :sendgrid_user_name),
   :password =>  Rails.application.credentials.dig(:sendgrid, :sendgrid_password),
-  :domain => 'heroku.com', 
+  :domain => 'my-book-exchanger.herokuapp.com', 
   :address => 'smtp.sendgrid.net',
   :port => 587,
   :authentication => :plain
