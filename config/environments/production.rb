@@ -74,14 +74,13 @@ Rails.application.configure do
 ActionMailer::Base.smtp_settings = {
   :user_name => Rails.application.credentials.dig(:sendgrid, :sendgrid_user_name),
   :password =>  Rails.application.credentials.dig(:sendgrid, :sendgrid_password),
-  :domain => 'my-book-exchanger.herokuapp.com', 
+  :domain => 'heroku.com', 
   :address => 'smtp.sendgrid.net',
   :port => 587,
-  :authentication => :plain,
-  :enable_starttls_auto => true
+  :authentication => :plain
 }
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: 'my_book_exchanger.herokuapp.com' }
+  config.action_mailer.default_url_options = { host: 'my-book-exchanger.herokuapp.com' }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
