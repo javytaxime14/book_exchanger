@@ -77,7 +77,7 @@ ActionMailer::Base.smtp_settings = {
   :domain => 'my-book-exchanger.herokuapp.com', 
   :address => 'smtp.sendgrid.net',
   :port => 587,
-  :authentication => :plain
+  :authentication => :plain,
   :enable_starttls_auto => true
 }
   config.action_mailer.delivery_method = :smtp
