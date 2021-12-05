@@ -67,7 +67,21 @@ Rails.application.configure do
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
-  # config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = false
+
+
+   # Code for Sendgrid
+ActionMailer::Base.smtp_settings = {
+  :user_name => Rails.application.credentials.dig(:sendgrid, :user_name),
+  :password =>  Rails.application.credentials.dig(:sendgrid, :password),
+  :domain => 'heroku.com', 
+  :address => 'smtp.sendgrid.net',
+  :port => 587,
+  :authentication => :plain,
+  :enable_starttls_auto => true
+}
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_url_options = { host: 'http://my_book_exchanger.herokuapp.com' }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
