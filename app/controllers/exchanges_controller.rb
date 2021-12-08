@@ -15,6 +15,7 @@ class ExchangesController < ApplicationController
 
   # GET /exchanges/1 or /exchanges/1.json
   def show
+
   end
 
   # GET /exchanges/new
@@ -32,11 +33,6 @@ class ExchangesController < ApplicationController
 
   def accepted
     @exchange = Exchange.where(status: '1')
-    if @exchange.save
-      @book1.update(state: '1')
-      @book2.update(state: '1')      
-    end
-    redirect_to exchanges_path
   end
 
   def rejected
@@ -50,14 +46,21 @@ class ExchangesController < ApplicationController
     @book2 = Book.find_by(id: params[:exchange][:book2_id])
     @exchange = Exchange.new(exchange_params)
 
+    if @exchange.save
+      redirect_to @exchange, notice: 'Exchange was successfully created.'
+      from = SendGrid::Email.new(email: 'javiera_56@hotmail.com')
+      to = SendGrid::Email.new(email: "#{@exchange.user2.email}")
+      subject = 'New exchange request'
+      content = SendGrid::Content.new(type: 'text/plain', value: 'Hi! You have a new exchange request. Please check the app for more details. Thanks!')
+      mail = SendGrid::Mail.new(from, subject, to, content)
 
-    respond_to do |format|
-      if @exchange.save
-        format.html { redirect_to @exchange, notice: "Exchange was successfully created." }
-        format.json { render :show, status: :created, location: @exchange }
+      sg = SendGrid::API.new(api_key: Rails.application.credentials.dig(:sendgrid, :password))
+      response = sg.client.mail._('send').post(request_body: mail.to_json)
+
+      if response.status_code == 202
+        puts 'Email sent successfully!'
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @exchange.errors, status: :unprocessable_entity }
+        puts 'There was an error sending the email!'
       end
     end
   end

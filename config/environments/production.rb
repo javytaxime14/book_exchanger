@@ -72,8 +72,8 @@ Rails.application.configure do
 
    # Code for Sendgrid
 ActionMailer::Base.smtp_settings = {
-  :user_name => Rails.application.credentials.dig(:sendgrid, :sendgrid_user_name),
-  :password =>  Rails.application.credentials.dig(:sendgrid, :sendgrid_password),
+  :user_name => Rails.application.credentials.dig(:sendgrid, :user_name),
+  :password =>  Rails.application.credentials.dig(:sendgrid, :password),
   :domain => 'heroku.com', 
   :address => 'smtp.sendgrid.net',
   :port => 587,

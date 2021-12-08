@@ -273,9 +273,6 @@ GEM
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2)
-    sendgrid-actionmailer (3.2.0)
-      mail (~> 2.7)
-      sendgrid-ruby (~> 6.4)
     sendgrid-ruby (6.6.0)
       ruby_http_client (~> 3.4)
     sprockets (3.7.2)
@@ -337,7 +334,7 @@ DEPENDENCIES
   ransack!
   sass-rails (~> 5.0)
   selenium-webdriver
-  sendgrid-actionmailer
+  sendgrid-ruby
   sqlite3
   turbolinks (~> 5)
   tzinfo-data

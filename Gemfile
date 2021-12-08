@@ -69,4 +69,4 @@ gem 'omniauth-github', github: 'omniauth/omniauth-github', branch: 'master'
 gem 'omniauth-rails_csrf_protection'
 gem 'activerecord-session_store'
 
-gem 'sendgrid-actionmailer'
+gem 'sendgrid-ruby'
