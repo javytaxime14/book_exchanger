@@ -70,3 +70,6 @@ gem 'omniauth-rails_csrf_protection'
 gem 'activerecord-session_store'
 
 gem 'sendgrid-ruby'
+
+gem 'dotenv-rails'
+gem 'rollbar'

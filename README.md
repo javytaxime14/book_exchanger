@@ -1,24 +1,39 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Book Exchanger is a project created to help users to manage and share their book collection, and to make a list of books they want to read. It also allows them to make exchanges with other users (as a register) and add them as friends.
 
-Things you may want to cover:
+ruby [2.7.4]
+Rails [5.2.6]
 
-* Ruby version
+Starting 
 
-* System dependencies
+Check out the repository
+$ git clone https://github.com/javytaxime14/book_exchanger.git
 
-* Configuration
+Create your application databases by using the rails command:
+$ rails db:create
+$ rails db:setup
 
-* Database creation
+Then you must install the gems:
+$ bundle install
 
-* Database initialization
+Testing Your Configuration
+bundle exec rails s
+And now you can visit the application in your browser: http://localhost:3000/
 
-* How to run the test suite
+Deployment
+Log in to heroku and run the database:
+$ heroku restart
+$ heroku run rake db:migrate
+$ heroku run rake db:seed
 
-* Services (job queues, cache servers, search engines, etc.)
+then run heroku open
 
-* Deployment instructions
+You can also visit the application with the address: www.book-exchanger.cl
 
-* ...
+To log in as admin use the following route: http://localhost:3000/admin/login and use the following credentials:
+
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password')
+
+Enjoy!
+...

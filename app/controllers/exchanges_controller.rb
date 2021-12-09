@@ -45,11 +45,12 @@ class ExchangesController < ApplicationController
     @book1 = Book.find_by(id: params[:exchange][:book1_id])
     @book2 = Book.find_by(id: params[:exchange][:book2_id])
     @exchange = Exchange.new(exchange_params)
+  
 
     if @exchange.save
       redirect_to @exchange, notice: 'Exchange was successfully created.'
-      from = SendGrid::Email.new(email: 'javiera_56@hotmail.com')
-      to = SendGrid::Email.new(email: "#{@exchange.user2.email}")
+      from = SendGrid::Email.new(email: 'javiera_56@hotmail.com') 
+      to = SendGrid::Email.new(email: 'javierahidalgonunez@gmail.com') #@exchange.user2.email 
       subject = 'New exchange request'
       content = SendGrid::Content.new(type: 'text/plain', value: 'Hi! You have a new exchange request. Please check the app for more details. Thanks!')
       mail = SendGrid::Mail.new(from, subject, to, content)
