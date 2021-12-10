@@ -4,6 +4,7 @@ Book Exchanger is a project created to help users to manage and share their book
 
 
 ruby version: 2.7.4
+
 Rails version: 5.2.6
 
 
@@ -14,23 +15,32 @@ $ git clone https://github.com/javytaxime14/book_exchanger.git
 
 
 Create your application databases by using the rails command: 
+
 $ rails db:create
+
 $ rails db:setup
 
 
 Then you must install the gems:
+
 $ bundle install
 
 
 ### Testing Your Configuration
+
 bundle exec rails s
+
 And now you can visit the application in your browser: http://localhost:3000/
 
 
 ### Deployment
+
 Log in to heroku and run the database:
+
 $ heroku restart
+
 $ heroku run rake db:migrate
+
 $ heroku run rake db:seed
 
 then run heroku open
