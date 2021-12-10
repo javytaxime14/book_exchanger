@@ -2,8 +2,8 @@
 
 Book Exchanger is a project created to help users to manage and share their book collection, and to make a list of books they want to read. It also allows them to make exchanges with other users (as a register) and add them as friends.
 
-ruby [2.7.4]
-Rails [5.2.6]
+ruby version: 2.7.4
+Rails version: 5.2.6
 
 Starting 
 
