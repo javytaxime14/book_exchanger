@@ -2,45 +2,50 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.bg-custom-1 {
+    background: linear-gradient(to right, #4cb130, #092200); 
+}
+
+.bg-custom-2 {
+    background: linear-gradient(to right, #1488cc, #2b32b2); 
+}
+
+.bg-custom-3 {
+    background: linear-gradient(to right, #cb2d3e, #ef473a);
+
+}
 
 .pagination a, .pagination span.current, .pagination span.gap {
     float: left;
     padding: 0 14px;
-    line-height: 38px;
+    line-height: 28px;
     text-decoration: none;
-    background-color: rgb(89, 162, 247);
-    border: 1px solid #DDD;
-    border-left-width: 0;
-    color: #FFF;
+    font-size: 14px;
+    background: linear-gradient(to right, #e52d27, #b31217); 
+    color: #fff;
+    border: 6px solid linear-gradient(to right, #e43a15, #e65245);
+    border-left-width: 3px;
 }
 
-.pagination {
-    border-left: 1px solid rgb(3, 52, 116);
-    .first{
-        padding : 0;
-        float: none;
-        border: none;
-    }
-    .prev {
-        padding : 0;
-        float: none;
-        border: none;
-    }
-    .page{
-        padding : 0;
-        float: none;
-        border: none;
-    }
-    .next{
-        padding : 0;
-        float: none;
-        border: none;
-    }
-    .last{
-        padding : 0;
-        float: none;
-        border: none;
-    }
+.pagination a:visited {
+    color: rgb(245, 185, 185); 
+}
+
+.pagination a:hover {
+    color:#ff4828; 
+}
+
+.page-item.active .page-link {
+    border-color: #b31217;
+    color:#181614;
+    border-radius: 20%;
+}
+
+.show-more {
+    color: #b31217;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration: none;
 }
 
 .img-fluid {

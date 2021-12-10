@@ -1,65 +1,68 @@
+<div class="container mt-4">
+  <h1>Exchanges</h1>
 
-<h1>Exchanges</h1>
 
+  <form action="" class="my-5 offset-md-9">
+    <%= select_tag :status, options_for_select([['All', ''], ['Accepted', 'accepted'], ['Pending', 'pending'], ['Rejected', 'rejected']], params[:status]) %>
+    <input type="submit" value="Buscar" class="btn btn-danger btn-sm">
+  </form>
 
-<form action="" class="my-5 offset-md-9">
-  <%= select_tag :status, options_for_select([['All', ''], ['Accepted', 'accepted'], ['Pending', 'pending'], ['Rejected', 'rejected']], params[:status]) %>
-  <input type="submit" value="Buscar" class="btn btn-danger btn-sm">
-</form>
-
-  <table class="table table-striped table-hover">
-    <thead>
-      <tr>
-        <th>User 1</th>
-        <th>User 2</th>
-        <th>Book 1</th>
-        <th>Book 2</th>
-        <th>Status</th>
-        <th>Created at</th>
-        <th>Updated at</th>
-        <th colspan="3"></th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @exchanges.each do |exchange| %>
+  <div class="table-responsive">
+    <table class="table table-striped table-hover">
+      <thead>
         <tr>
-          <td><% if exchange.user1_id == current_user.id %> 
-            <strong><%= exchange.user1.name %> <%= exchange.user1.last_name %></strong>
-          <% else %>
-            <%= link_to exchange.user1.name, user_path(exchange.user1.id) %> <%= link_to exchange.user1.last_name, user_path(exchange.user1.id) %>
-          </td>
-            <% end %>
-          <td> <% if exchange.user2_id == current_user.id %> 
-            <strong><%= exchange.user2.name %> <%= exchange.user2.last_name %></strong>
-          <% else %>
-            <%= exchange.user2.name %> <%= exchange.user2.last_name %>  
-          </td>
-            <% end %>
-          <td><%= exchange.book1.title %></td>
-          <td><%= exchange.book2.title %></td>
-          <td><%= exchange.status %></td>
-          <td><%= time_ago_in_words(exchange.created_at) %> ago</td>
-          <td><%= time_ago_in_words(exchange.updated_at) %> ago</td>
-          <td><%= link_to 'Show', exchange %></td>
-          <td><% if current_user.id == exchange.user1_id || current_user.id == exchange.user2_id %></td>
-            <td><%= link_to 'Edit', edit_exchange_path(exchange) %></td>
-            <td><%= link_to 'Delete', exchange, :confirm => 'Are you sure?', :method => :delete %></td>
-          <% end %>
-        <% end %>
+          <th>User 1</th>
+          <th>User 2</th>
+          <th>Book 1</th>
+          <th>Book 2</th>
+          <th>Status</th>
+          <th>Created at</th>
+          <th>Updated at</th>
+          <th colspan="3"></th>
         </tr>
-    </tbody>
-  </table>
+      </thead>
 
-  <div class="row">
-    <div class="col-md-8 offset-md-5 mt-3">
-      <%= paginate @exchanges %>
-      <%= link_to_next_page @exchanges, 'Mostrar más' %>
-    </div>
+      <tbody>
+        <% @exchanges.each do |exchange| %>
+          <tr>
+            <td><% if exchange.user1_id == current_user.id %> 
+              <strong><%= exchange.user1.name %> <%= exchange.user1.last_name %></strong>
+            <% else %>
+              <%= link_to exchange.user1.name, user_path(exchange.user1.id) %> <%= link_to exchange.user1.last_name, user_path(exchange.user1.id) %>
+            </td>
+              <% end %>
+            <td> <% if exchange.user2_id == current_user.id %> 
+              <strong><%= exchange.user2.name %> <%= exchange.user2.last_name %></strong>
+            <% else %>
+              <%= exchange.user2.name %> <%= exchange.user2.last_name %>  
+            </td>
+              <% end %>
+            <td><%= exchange.book1.title %></td>
+            <td><%= exchange.book2.title %></td>
+            <td><%= exchange.status %></td>
+            <td><%= time_ago_in_words(exchange.created_at) %> ago</td>
+            <td><%= time_ago_in_words(exchange.updated_at) %> ago</td>
+            <td><%= link_to 'Show', exchange %></td>
+            <td><% if current_user.id == exchange.user1_id || current_user.id == exchange.user2_id %></td>
+              <td><%= link_to 'Edit', edit_exchange_path(exchange) %></td>
+              <td><%= link_to 'Delete', exchange, :confirm => 'Are you sure?', :method => :delete %></td>
+            <% end %>
+          <% end %>
+          </tr>
+      </tbody>
+    </table>
   </div>
 
+    <div class="row">
+      <div class="col-md-8 offset-md-5 mt-3">
+        <%= paginate @exchanges %>
+        <%= link_to_next_page @exchanges, 'Mostrar más', class: 'show-more' %>
+      </div>
+    </div>
 
-<br>
 
-<%= link_to 'New Exchange', new_exchange_path, :class => 'btn btn-primary btn-sm' %>  
-<%= link_to 'Back to Home', root_path, :class => 'btn btn-danger btn-sm' %>
+  <br>
+
+  <%= link_to 'New Exchange', new_exchange_path, :class => 'btn btn-primary btn-sm' %>  
+  <%= link_to 'Back to Home', root_path, :class => 'btn btn-danger btn-sm' %>
+</div>

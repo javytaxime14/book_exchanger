@@ -35,7 +35,7 @@
     <div class="field">
       <% if exchange.user2_id == current_user.id %>
         <%= form.label :status %><br/>
-        <%= form.select :status, Exchange.statuses.keys, { include_blank: true } %>
+        <%= form.select :status, Exchange.statuses.keys, { include_blank: false }, { default: "Pending" } %>
       <% end %>
     </div>
 
