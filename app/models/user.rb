@@ -11,6 +11,7 @@ class User < ApplicationRecord
          validates :email, :phone_number, uniqueness: true
          has_many :friends
          has_many :reviews
+         after_validation :report_validation_errors_to_rollbar
      
 
   def is_following?(friend_id)
