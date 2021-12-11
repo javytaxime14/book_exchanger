@@ -12,8 +12,52 @@ header {
     height: 50vh;
   }
 
-  .exchange-book {
+.home-title {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #000;
+    text-shadow: 0 0 5px rgb(117, 117, 117);
+    font-family: 'Syne', sans-serif;
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+
+.home-caption {
+    font-size: 1.150rem;
+    color: #000;
+    font-family: 'Epilogue', sans-serif;
+    margin-top: -10px;
+    margin-bottom: -10px;
+}
+
+.exchange-book {
     color: rgb(177, 7, 7);
     text-decoration: none;
   }
+
+h1 {
+  font-family: 'ABeeZee', sans-serif;
+  font-weight: bold;
+}
+
+h3 {
+  font-family: 'ABeeZee', sans-serif;
+}
+
+h5 {
+  font-family: 'Syne', sans-serif;
+  font-weight: bold;
+}
+
+.btn {
+  font-family: 'Syne', sans-serif;
+}
+
+.card-text strong {
+  font-family: 'Epilogue', sans-serif;
+}
+
+.card-text {
+  font-family: 'Readex Pro', sans-serif;
+}
 

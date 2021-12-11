@@ -1,3 +1,45 @@
 // Place all the styles related to the Exchanges controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.user-link {
+    color: rgb(177, 7, 7);
+    text-decoration: none;
+    font-family: 'ABeeZee', sans-serif;
+}
+
+.user-link:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+.action-link {
+    color: rgb(110, 21, 21);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    font-family: 'Epilogue', sans-serif;
+}
+
+.action-link:hover {
+    color: #000;
+    text-decoration: none;
+}
+
+.filter-form {
+    font-family: 'Epilogue', sans-serif;
+}
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background: linear-gradient(225deg, #ef3b36, #ffffff); 
+}
+
+.table td {
+    font-family: 'ABeeZee', sans-serif;
+}

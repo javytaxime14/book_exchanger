@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container mt-5">
   <div class="row">
     <div class="col-md-9">
       <h1 class="mb-3">Hola <%= @user.name %>!</h1>
@@ -70,6 +70,7 @@
             <% end %>
             <% if @user.listed_books.count == 0 %>
               <p>No tienes libros en tu lista</p>
+            </p> 
             <% end %>
             <hr>
             <p> <%= link_to 'Ver mi lista', user_path(@user), class: 'btn btn-danger btn-sm' %> </p>
