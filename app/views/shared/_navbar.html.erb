@@ -15,7 +15,8 @@
                 <li class="nav-item mb-3"><small>Signed in as <strong class="font-weight-bold"><%= link_to current_user.name, user_path(current_user), class: 'navbar-link' %></strong></small></li>  
                 <li class="nav-item"><%= link_to 'Explore', books_path, :class => 'navbar-link mb-1' %></li>
                 <li class="nav-item"><%= link_to 'Intercambios', exchanges_path, :class => 'navbar-link mb-1' %></li>
-                <li class="nav-item"><%= link_to "Log Out", destroy_user_session_path, method: :delete, :class => 'navbar-link mb-1'  %></li>
+                <li class="nav-item"><%= link_to 'Mis libros', my_books_path(current_user.id), :class => 'navbar-link mb-3' %></li>
+                <li class="nav-item"><%= link_to "Log Out", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
             <% else %>
                 <li class="nav-item"><%= link_to "Home", root_path, :class => 'navbar-link mb-1' %></li>
                 <li class="nav-item"><%= link_to 'Explore', books_path, :class => 'navbar-link mb-1' %></li>
