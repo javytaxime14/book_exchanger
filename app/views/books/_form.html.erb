@@ -1,62 +1,69 @@
 <div class="container">
-  <%= form_with(model: book, local: true, :id =>
-  params[:id] ) do |form| %>
-    <% if book.errors.any? %>
-      <div id="error_explanation">
-        <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+  <div class="row">
+    <div class="col-md-5">
+      <%= image_tag '5.png', class: 'img-fluid mt-5' %>
+    </div>
+    <div class="col-md-7">
+      <%= form_with(model: book, local: true, :id =>
+      params[:id] ) do |form| %>
+        <% if book.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
 
-        <ul>
-        <% book.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
+            <ul>
+            <% book.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
         <% end %>
-        </ul>
-      </div>
-    <% end %>
 
-    <div class="field">
-      <%= form.label :title %> <br />
-      <%= form.text_field :title %>
+        <div class="field">
+          <%= form.label :title, class: 'book-label' %> <br />          
+          <%= form.text_field :title %>
+        </div>
+
+        <div class="field">
+          <%= form.label :author, class: 'book-label' %> <br />
+          <%= form.text_field :author %>
+        </div>
+
+        <div class="field">
+          <%= form.label :description, class: 'book-label' %> <br />
+          <%= form.text_area :description %>
+        </div>
+
+        <div class="field">
+          <%= form.label :genre, class: 'book-label' %> <br />
+          <%= form.text_field :genre %>
+        </div>
+
+        <div class="field">
+          <%= form.label :publisher, class: 'book-label' %> <br />
+          <%= form.text_field :publisher %>
+        </div>
+
+        <div class="field">
+          <%= form.label :year, class: 'book-label' %> <br />
+          <%= form.number_field :year %>
+        </div>
+
+        <div class="field">
+          <%= form.label :ISBN, class: 'book-label' %> <br />
+          <%= form.text_field :isbn %>
+        </div>
+
+        <div class="field">
+          <%= form.label :state, class: 'book-label' %> <br />
+          <%= form.select :state, Book.states.keys, class: 'book-label' %>
+        </div>
+
+        <%= form.hidden_field :book_id, :value => @book.id %>
+
+        <div class="actions">
+          <%= form.submit "Save", class: "btn btn-outline-success btn-sm mt-4" %>
+        </div>
+      <% end %>
     </div>
-
-    <div class="field">
-      <%= form.label :author %> <br />
-      <%= form.text_field :author %>
-    </div>
-
-    <div class="field">
-      <%= form.label :description %> <br />
-      <%= form.text_area :description %>
-    </div>
-
-    <div class="field">
-      <%= form.label :genre %> <br />
-      <%= form.text_field :genre %>
-    </div>
-
-    <div class="field">
-      <%= form.label :publisher %> <br />
-      <%= form.text_field :publisher %>
-    </div>
-
-    <div class="field">
-      <%= form.label :year %> <br />
-      <%= form.number_field :year %>
-    </div>
-
-    <div class="field">
-      <%= form.label :isbn %> <br />
-      <%= form.text_field :isbn %>
-    </div>
-
-    <div class="field">
-      <%= form.label :state %> <br />
-      <%= form.select :state, Book.states.keys %>
-    </div>
-
-    <%= form.hidden_field :book_id, :value => @book.id %>
-
-    <div class="actions">
-      <%= form.submit "Save", class: "btn btn-outline-success btn-sm mt-2" %>
-    </div>
-  <% end %>
+  </div>
 </div>

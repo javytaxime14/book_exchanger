@@ -1,5 +1,5 @@
-<div class="container mt-4">
-    <h2 class="text-center mb-5"><strong>Perfil de </strong><%= @user.name %> <%= @user.last_name %></h2>
+<div class="container mt-5">
+    <h2 class="text-center mb-5"><%= @user.name %> <%= @user.last_name %>'s Profile</h2>
 
     <div class="row mt-2">
         <div class="col-md-4">
@@ -8,7 +8,7 @@
                 <% if current_user.is_following?(@user.id) %>
                     <%= link_to 'Unfollow', users_follow_path(@user.id), method: :post, class: 'btn btn-danger btn-sm my-1 mx-1' %>
                 <% else %>
-                    <%= link_to 'Follow', users_follow_path(@user.id), method: :post, class: 'btn btn-primary btn-sm my-1 mx-1' %>
+                    <%= link_to 'Follow', users_follow_path(@user.id), method: :post, class: 'btn bg-custom-1 text-white btn-sm my-1 mx-1' %>
                 <% end %>
             <% end %>
 
@@ -18,13 +18,16 @@
                         <%= @user.email %>
                     </p>
                     <p class="card-text">
-                        <strong>Teléfono:</strong>
+                        <strong>Phone number:</strong>
                         <%= @user.phone_number %>
                     </p>
                     <p class="card-text">
-                        <strong>Amigos:</strong>
+                        <strong>Friends:</strong>
                         <%= @user.friends.count%>
                     </p>
+                    <% if @user.id == current_user.id %>
+                        <%= link_to 'Edit', edit_user_registration_path(@user), class: 'btn btn-custom-2 btn-sm my-1 mx-1' %>
+                    <% end %>
                 </div>
             </div>
         </div>
@@ -32,39 +35,38 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">
-                        <strong>Libros de </strong>
-                        <%= @user.name %> <%= @user.last_name %>
+                        <%= @user.name %> <%= @user.last_name %>'s books
                     </h5>
                     <p class="card-text">
-                    <p> Ingresados: 
+                    <p class="session-label"> <strong class="book-label">Owned:</strong> 
                         <% if @user.books.count == 0 %>
-                            <%= @user.books.count %> libros
+                            <%= @user.books.count %> books
                             <% elsif @user.books.count == 1 %>
-                                <%= @user.books.count %> libro
+                                <%= @user.books.count %> book
                             <% else %>
-                                <%= @user.books.count %> libros
+                                <%= @user.books.count %> books
                             <% end %>
-                                <%= link_to 'Ver todos', my_books_path(@user.id), class: 'btn btn-primary btn-sm', style: 'float: right;' %>
-                        </p>
-                    <p> Quiere leer: 
+                                <%= link_to 'See all', my_books_path(@user.id), class: 'btn btn-custom-1 btn-sm', style: 'float: right;' %>
+                    </p>
+                    <p class="session-label"><strong class="book-label"> Want to read: </strong> 
                             <% if @user.listed_books.count == 0 %>
-                                <%= @user.listed_books.count %> libros
+                                <%= @user.listed_books.count %> books
                             <% elsif @user.listed_books.count > 1 %>
-                            <%= @user.listed_books.count %> libros
+                            <%= @user.listed_books.count %> books
                             <% else %>
-                                <%= @user.listed_books.count %> libro
+                                <%= @user.listed_books.count %> book
                             <% end %>
-                        </p>
+                    </p>
                 </div>
             </div>
         </div>
     </div>
     <br>
     <div class="row my-5">
-        <h5 class="my-3">Libros que <strong><%= @user.name %> <%= @user.last_name %> </strong> quiere leer</h5>
+        <h5 class="my-3">Books <strong><%= @user.name %> <%= @user.last_name %> </strong> wants to read</h5>
         <% @user.listed_books.each do |book| %>
             <div class="col-md-2"> 
-                <div class="card text-white bg-warning mb-3" style="max-width: 10rem; height: 10rem;">
+                <div class="card bg-custom-4 mb-3" style="max-width: 12rem; height: 10rem;">
                     <div class="card-header"><strong><small>I want to read</small></strong></div>
                     <div class="card-body">
                         <h5 class="card-title"><%= book.title %></h5>
@@ -75,6 +77,6 @@
         <% end %>
     </div>
 
-    <%= link_to 'Volver', books_path, class: 'btn btn-outline-primary btn-sm' %>
+    <%= link_to 'Back', books_path, class: 'btn btn-outline-primary btn-sm' %>
 </div>
 

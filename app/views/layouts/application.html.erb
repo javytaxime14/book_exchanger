@@ -12,19 +12,20 @@
     <link href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@300&display=swap" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    
   </head>
 
   <body class="page-responsive">
     <%= render 'shared/navbar' %>
       <div class="my-4 pt-4">
-        <% if alert%>
+        <% if alert %>
         <div class="alert alert-danger text-center my-1 pl-4" role="alert">
           <%= alert %>
+          <%= image_tag 'stop.png', width: '26px', height: '22px', class: 'my-2' %>
         </div>
-        <%elsif notice%>
+        <%elsif notice %>
         <div class="notice alert-warning text-center pl-4" role="notice">
           <p class="pt-4"><%= notice %>
+          <%= image_tag 'green-star.png', width: '20px', height: '20px', class: 'mb-2' %>
         </div>
         <% end %>
       

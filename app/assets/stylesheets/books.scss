@@ -12,8 +12,16 @@
 
 .bg-custom-3 {
     background: linear-gradient(to right, #cb2d3e, #ef473a);
-
 }
+
+.bg-custom-4 {
+    background: linear-gradient(to right, #fceabb, #f8b500);
+}
+
+.bg-custom-5 {
+    background: #ffb18d
+}
+
 
 .pagination a, .pagination span.current, .pagination span.gap {
     float: left;
@@ -56,4 +64,22 @@
 
 .alert, .notice {
     font-family: 'Readex Pro', sans-serif;
+}
+
+.book-label {
+    font-family: 'Syne', sans-serif;
+}
+
+.btn-custom-1 {
+    background: linear-gradient(to right, #ec5954, #8a1d20); 
+    color: #fff;
+    border: 6px solid linear-gradient(to right, #e43a15, #e65245);
+    border-left-width: 3px;
+}
+
+.btn-custom-2 {
+    background: linear-gradient(to right, #ffc400, #f78c4e); 
+    color: #fff;
+    border: 6px solid linear-gradient(to right,#f78c4e, #ffc400);
+    border-left-width: 3px;
 }

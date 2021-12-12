@@ -1,8 +1,8 @@
-<div class="container">
+<div class="container mt-5">
     <h1>Editing Book</h1>
 </div>
 <%= render 'form', book: @book %>
 <div class="container">
-    <%= link_to 'Show', @book %> |
-    <%= link_to 'Back', books_path %>
+    <%= link_to 'Show', @book, class: 'btn btn-warning btn-sm' %> |
+    <%= link_to 'Back', books_path, class: 'btn btn-secondary btn-sm' %>
 </div>

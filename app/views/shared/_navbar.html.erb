@@ -5,22 +5,22 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-        <div class="offcanvas-header bg-danger">
+        <div class="offcanvas-header">
           <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Book Exchanger</h5>
           <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
           <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
             <% if user_signed_in? %>
-                <li class="nav-item"><small>Signed in as <strong class="font-weight-bold"><%= link_to current_user.name, user_path(current_user), class: 'navbar-link' %></strong></small></li>  
-                <li class="nav-item"><%= link_to 'Explore', books_path, :class => 'navbar-link' %></li>
-                <li class="nav-item"><%= link_to 'Intercambios', exchanges_path, :class => 'navbar-link' %></li>
-                <li class="nav-item"><%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %></li>
+                <li class="nav-item mb-3"><small>Signed in as <strong class="font-weight-bold"><%= link_to current_user.name, user_path(current_user), class: 'navbar-link' %></strong></small></li>  
+                <li class="nav-item"><%= link_to 'Explore', books_path, :class => 'navbar-link mb-1' %></li>
+                <li class="nav-item"><%= link_to 'Intercambios', exchanges_path, :class => 'navbar-link mb-1' %></li>
+                <li class="nav-item"><%= link_to "Log Out", destroy_user_session_path, method: :delete, :class => 'navbar-link mb-1'  %></li>
             <% else %>
-                <li class="nav-item"><%= link_to "Home", root_path, :class => 'navbar-link' %></li>
-                <li class="nav-item"><%= link_to 'Explore', books_path, :class => 'navbar-link' %></li>
-                <li class="nav-item"><%= link_to "Register", new_user_registration_path, :class => 'navbar-link' %></li>
-                <li class="nav-item"><%= link_to "Login", new_user_session_path, :class => 'navbar-link' %></li>  
+                <li class="nav-item"><%= link_to "Home", root_path, :class => 'navbar-link mb-1' %></li>
+                <li class="nav-item"><%= link_to 'Explore', books_path, :class => 'navbar-link mb-1' %></li>
+                <li class="nav-item"><%= link_to "Register", new_user_registration_path, :class => 'navbar-link mb-1' %></li>
+                <li class="nav-item"><%= link_to "Log In", new_user_session_path, :class => 'navbar-link mb-1' %></li>  
             <% end %>
           </ul>
         </div>

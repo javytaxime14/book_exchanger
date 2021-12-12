@@ -1,45 +1,46 @@
+<div class="container">
+  <%= form_with(model: exchange, local: true) do |form| %>
+    <% if exchange.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(exchange.errors.count, "error") %> prohibited this exchange from being saved:</h2>
 
-<%= form_with(model: exchange, local: true) do |form| %>
-  <% if exchange.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(exchange.errors.count, "error") %> prohibited this exchange from being saved:</h2>
+        <ul>
+        <% exchange.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
 
-      <ul>
-      <% exchange.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+      <div>
+        <%= form.label :user1_id, class: 'book-label' %> <br/>
+        <%= form.select :user1_id, User.all.select { |u| u == current_user }.map { |u| [u.name, u.id] } %>
+      </div>
+  
+      <div class="field">
+        <%= form.label :user2_id, class: 'book-label' %> <br/>
+        <%= form.select :user2_id, User.all.select { |u| u != current_user }.map { |u| [u.name, u.id] } %>
+      </div>
+    
+      <div class="field">
+        <%= form.label :book1_id, class: 'book-label' %> <br/>
+        <%= form.select :book1_id, current_user.books.select { |b| b.state == "Available" }.map { |b| [b.title, b.id] } %>
+      </div>
+  
+      <div class="field">
+        <%= form.label :book2_id, class: 'book-label' %> <br/>
+        <%= form.select :book2_id, Book.all.select { |b| b.user_id != current_user.id && b.state == "Available" }.map { |b| [b.title, b.id] } %>
+      </div>
+
+      <div class="field">
+        <% if exchange.user2_id == current_user.id %>
+          <%= form.label :status, class: 'book-label' %> <br/>
+          <%= form.select :status, Exchange.statuses.keys, { include_blank: false }, { default: "Pending" } %>
+        <% end %>
+      </div>
+
+    <div class="actions">
+      <%= form.submit "Crear intercambio", class: 'btn btn-primary btn-sm mt-3' %>
     </div>
   <% end %>
-
-    <div>
-      <%= form.label :user1_id %><br/>
-      <%= form.select :user1_id, User.all.select { |u| u == current_user }.map { |u| [u.name, u.id] } %>
-    </div>
- 
-    <div class="field">
-      <%= form.label :user2_id %><br/>
-      <%= form.select :user2_id, User.all.select { |u| u != current_user }.map { |u| [u.name, u.id] } %>
-    </div>
-  
-    <div class="field">
-      <%= form.label :book1_id %><br/>
-      <%= form.select :book1_id, current_user.books.select { |b| b.state == "Available" }.map { |b| [b.title, b.id] } %>
-    </div>
- 
-    <div class="field">
-      <%= form.label :book2_id %><br/>
-      <%= form.select :book2_id, Book.all.select { |b| b.user_id != current_user.id && b.state == "Available" }.map { |b| [b.title, b.id] } %>
-    </div>
-
-    <div class="field">
-      <% if exchange.user2_id == current_user.id %>
-        <%= form.label :status %><br/>
-        <%= form.select :status, Exchange.statuses.keys, { include_blank: false }, { default: "Pending" } %>
-      <% end %>
-    </div>
-
-  <div class="actions">
-    <%= form.submit "Crear intercambio", class: 'btn btn-primary btn-sm mt-2' %>
-  </div>
-<% end %>
+</div>

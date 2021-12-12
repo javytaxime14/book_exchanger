@@ -1,22 +1,27 @@
-<%= search_form_for @q do |f| %>
-          <div class="field">
-            <%= f.label :title_cont %> <br />
-            <%= f.search_field :title_cont, class: 'form-control form-control-sm' %>
-          </div>
-          <div class="field">
-            <%= f.label :author_cont %> <br />
-            <%= f.search_field :author_cont, class: 'form-control form-control-sm' %>
-          </div>
-          <div class="field">
-            <%= f.label :isbn_cont %> <br />
-            <%= f.search_field :isbn_cont, class: 'form-control form-control-sm' %>
-          </div>
-          <div class="field">
-            <%= f.label :user_name_or_user_last_name_cont %> <br />
-            <%= f.search_field :user_name_or_user_last_name_cont, class: 'form-control form-control-sm' %>
-          </div>
-          <div class="actions">
-            <%= f.submit "search", :class => "btn btn-danger btn-sm mb-4 mt-3" %>
-            <%= link_to 'Reset', books_path, :class => "btn btn-secondary btn-sm mb-4 mt-3 ml-2" %>
-          </div>
-        <% end %>
+<div class="card">
+  <div class="card-body bg-custom-5">
+    <%= search_form_for @q do |f| %>
+              <div class="field">
+                <%= f.label :title_cont, class: 'book-label' %>
+                <%= f.search_field :title_cont, class: 'form-control form-control-sm' %>
+              </div>
+              <div class="field">
+                <%= f.label :author_cont, class: 'book-label mt-2' %>
+                <%= f.search_field :author_cont, class: 'form-control form-control-sm' %>
+              </div>
+              <div class="field">
+                <%= f.label :isbn_cont, class: 'book-label mt-2' %>
+                <%= f.search_field :isbn_cont, class: 'form-control form-control-sm' %>
+              </div>
+              <div class="field">
+                <%= f.label :user_name_or_user_last_name_cont, class: 'book-label mt-2' %>
+                <%= f.search_field :user_name_or_user_last_name_cont, class: 'form-control form-control-sm' %>
+              </div>
+
+              <div class="actions">
+                <%= f.submit "Search", :class => "btn btn-custom-1 btn-sm mb-4 mt-3" %>
+                <%= link_to 'Reset', books_path, :class => "btn btn-secondary btn-sm mb-4 mt-3 ml-2" %>
+              </div>
+            <% end %>
+  </div>
+</div>

@@ -40,6 +40,11 @@ h1 {
   font-weight: bold;
 }
 
+h2 {
+  font-family: 'Readex Pro', sans-serif;
+  font-weight: bold;
+}
+
 h3 {
   font-family: 'ABeeZee', sans-serif;
 }
@@ -61,3 +66,21 @@ h5 {
   font-family: 'Readex Pro', sans-serif;
 }
 
+.session-link {
+  font-family: 'Readex Pro', sans-serif;
+  text-decoration: none;
+}
+
+.session-link:hover {
+  color: #000;
+  font-weight: bold;
+}
+
+.session-title {
+  font-family: 'Epilogue', sans-serif;
+  font-weight: bold;
+}
+
+.session-label {
+  font-family: 'ABeeZee', sans-serif;
+}
