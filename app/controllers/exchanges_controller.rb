@@ -55,7 +55,7 @@ class ExchangesController < ApplicationController
       content = SendGrid::Content.new(type: 'text/plain', value: 'Hi! You have a new exchange request. Please check the app for more details. Thanks!')
       mail = SendGrid::Mail.new(from, subject, to, content)
 
-      sg = SendGrid::API.new(api_key: Rails.application.credentials.dig(:sendgrid, :password))
+      sg = SendGrid::API.new(api_key: Rails.application.credentials.dig(:sendgrid, :sendgrid_password))
       response = sg.client.mail._('send').post(request_body: mail.to_json)
 
       if response.status_code == 202

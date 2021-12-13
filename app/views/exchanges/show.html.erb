@@ -1,5 +1,6 @@
-<div class = "container">
+<div class="container mt-5">
 
+  <h2 class="mb-4">Exchange #<%= @exchange.id %> details </h2> 
   <p>
     <strong>User 1:</strong>
     <%= @exchange.user1.name %> <%= @exchange.user1.last_name %>
@@ -25,6 +26,16 @@
     <%= @exchange.status %>
   </p>
 
-  <%= link_to 'Edit', edit_exchange_path(@exchange) %> |
-  <%= link_to 'Back', exchanges_path %>
+  <p>
+    <strong>Created at:</strong>
+    <%= @exchange.created_at.strftime("%d-%b-%Y %H:%M") %>
+  </p>
+
+  <% if current_user.id == @exchange.user1_id || current_user.id == @exchange.user2_id %>
+    <%= link_to 'Edit', edit_exchange_path(@exchange), class: 'btn btn-custom-2 btn-sm' %>
+    <%= link_to 'Back', exchanges_path, class: 'btn bg-custom-3 btn-sm ml-5' %>
+    <%= link_to 'Delete', exchange_path(@exchange), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-custom-3 btn-sm ml-5' %>
+  <% else %>
+    <%= link_to 'Back', exchanges_path, class: 'btn bg-custom-3 btn-sm' %>
+  <% end %>
 </div>
