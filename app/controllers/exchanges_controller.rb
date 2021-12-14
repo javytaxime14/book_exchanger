@@ -41,21 +41,22 @@ class ExchangesController < ApplicationController
 
   # POST /exchanges or /exchanges.json
   def create
- 
-    @book1 = Book.find_by(id: params[:exchange][:book1_id])
-    @book2 = Book.find_by(id: params[:exchange][:book2_id])
+    @user1 = User.find_by(id: params[:exchange][:user1_id])
+    @user2 = User.find_by(id: params[:exchange][:user2_id])
+    @book1 = Book.find_by(id: params[:exchange][:book1_id], user_id: @user1.id)
+    @book2 = Book.find_by(id: params[:exchange][:book2_id], user_id: @user2.id)
     @exchange = Exchange.new(exchange_params)
   
 
     if @exchange.save
       redirect_to @exchange, notice: 'Exchange was successfully created.'
       from = SendGrid::Email.new(email: 'javiera_56@hotmail.com') 
-      to = SendGrid::Email.new(email: 'javierahidalgonunez@gmail.com') #@exchange.user2.email 
+      to = SendGrid::Email.new(email: @exchange.user2.email)
       subject = 'New exchange request'
       content = SendGrid::Content.new(type: 'text/plain', value: 'Hi! You have a new exchange request. Please check the app for more details. Thanks!')
       mail = SendGrid::Mail.new(from, subject, to, content)
 
-      sg = SendGrid::API.new(api_key: Rails.application.credentials.dig(:sendgrid, :sendgrid_password))
+      sg = SendGrid::API.new(api_key: Rails.application.credentials.dig(:sendgrid, :sendgrid_api_key))
       response = sg.client.mail._('send').post(request_body: mail.to_json)
 
       if response.status_code == 202
