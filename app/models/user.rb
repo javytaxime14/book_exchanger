@@ -27,7 +27,6 @@ class User < ApplicationRecord
       user.email = provider_data.info.email
       user.password = Devise.friendly_token[0,20]
       user.name = provider_data.info.name   # assuming the user model has a name
-      user.last_name = provider_data.info.last_name
     end
   end
 end

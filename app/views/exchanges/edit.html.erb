@@ -1,8 +1,52 @@
 <div class="container mt-5">
     <h1>Editing Exchange</h1>
 
-    <%= render 'form', exchange: @exchange %>
+    <%= form_with(model: @exchange, local: true) do |form| %>
 
-    <%= link_to 'Show', @exchange, class: 'btn btn-custom-2 btn-sm mt-3 mr-4' %> 
+  <div class="field mb-2">
+    <%= form.label :user1_id, class: 'book-label' %> <br/>
+    <%= @exchange.user1.name %>
+  </div>
+
+  <div class="field mb-2">
+    <%= form.label :user2_id, class: 'book-label' %> <br/>
+    <%= @exchange.user2.name %>
+  </div>
+
+  <div class="field">
+    <% if @exchange.user1 == current_user %>
+      <%= form.label :book1_id, class: 'book-label' %> <br/>
+      <%= form.select :book1_id, @exchange.user1.books.select { |b| b.state == "Available" }.map { |b| [b.title, b.id] } %>
+    <% else %>
+        <%= form.label :book1_id, class: 'book-label' %> <br/>
+        <%= @exchange.book1.title %>
+    <% end %>
+    </div>
+
+  <div class="field">
+    <% if @exchange.user2 == current_user %>
+      <%= form.label :book2_id, class: 'book-label' %> <br/>
+      <%= form.select :book2_id, @exchange.user2.books.select { |b| b.state == "Available" }.map { |b| [b.title, b.id] } %>
+    <% else %>
+        <%= form.label :book2_id, class: 'book-label' %> <br/>
+        <%= @exchange.book2.title %>
+    <% end %>
+    </div>
+
+  <div class="field">
+    <% if @exchange.user2_id == current_user.id %>
+      <%= form.label :status, class: 'book-label' %> <br/>
+      <%= form.select :status, Exchange.statuses.keys, { default: "Pending" } %>
+    <% end %>
+  </div>
+
+    <div class="actions">
+    <%= form.submit "Save changes", class: 'btn bg-custom-3 btn-sm text-white mt-3' %>
+    </div>
+<% end %>
+
+
+
+    <%= link_to 'Show', @exchange, class: 'btn bg-custom-4 btn-sm text-white mt-3' %> 
     <%= link_to 'Back', exchanges_path, class: 'btn btn-secondary btn-sm mt-3' %>
 </div>

@@ -26,17 +26,29 @@
         <% @exchanges.each do |exchange| %>
           <tr>
             <td><% if exchange.user1_id == current_user.id %> 
-              <strong><%= exchange.user1.name %> <%= exchange.user1.last_name %></strong>
+              <strong><%= exchange.user1.name %> 
+                <% if exchange.user1.last_name.present? %>
+                  <%= exchange.user1.last_name %></strong>
+                <% end %>
             <% else %>
-              <%= link_to exchange.user1.name, user_path(exchange.user1.id), class: 'user-link' %> <%= link_to exchange.user1.last_name, user_path(exchange.user1.id), class: 'user-link' %> 
+              <%= link_to exchange.user1.name, user_path(exchange.user1.id), class: 'user-link' %>
+              <% if exchange.user1.last_name.present? %> 
+                <%= link_to exchange.user1.last_name, user_path(exchange.user1.id), class: 'user-link' %>
+              <% end %>   
+            <% end %>
             </td>
-              <% end %>
             <td> <% if exchange.user2_id == current_user.id %> 
-              <strong><%= exchange.user2.name %> <%= exchange.user2.last_name %></strong>
+              <strong><%= exchange.user2.name %> 
+                <% if exchange.user2.last_name.present? %>
+                  <%= exchange.user2.last_name %></strong>
+                <% end %>
             <% else %>
-              <%= exchange.user2.name %> <%= exchange.user2.last_name %>  
-            </td>
+              <%= link_to exchange.user2.name, user_path(exchange.user2.id), class: 'user-link' %>
+              <% if exchange.user2.last_name.present? %> 
+                <%= link_to exchange.user2.last_name, user_path(exchange.user2.id), class: 'user-link' %>
               <% end %>
+            <% end %>
+            </td>
             <td><%= exchange.book1.title %></td>
             <td><%= exchange.book2.title %></td>
             <td><%= exchange.status %></td>

@@ -42,6 +42,11 @@
             <strong>State:</strong>
             <%= @book.state %>
             </p>
+
+            <p>
+            <strong>Owner:</strong>
+            <%= @book.user.name %> <%= @book.user.last_name %>
+            </p>
         </div>
         </div>
     

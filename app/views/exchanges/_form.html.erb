@@ -29,7 +29,7 @@
   
       <div class="field">
         <%= form.label :book2_id, class: 'book-label' %> <br/>
-        <
+        <%= form.select :book2_id, Book.all.select { |b| b.user_id != current_user.id && b.state == "Available" }.map { |b| [b.title, b.id] } %>
       </div>
 
       <div class="field">

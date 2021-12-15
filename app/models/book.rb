@@ -8,7 +8,7 @@ class Book < ApplicationRecord
   has_many :listing_users, :through => :booklists, :source => :user
   has_many :reviews, dependent: :destroy
 
-  
+  scope :friends_books_index, -> (user) { where(user_id: user.arr_friends_id) }
  
   def is_listed?(user)
     self.listing_users.include?(user)

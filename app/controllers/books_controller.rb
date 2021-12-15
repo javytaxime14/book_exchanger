@@ -5,11 +5,15 @@ class BooksController < ApplicationController
 
   # GET /books or /books.json
   def index
-    @q = Book.page(params[:page]).per(6).ransack(params[:q])
+    @q = Book.page(params[:page]).per(5).ransack(params[:q])
     @books = @q.result
 
     if params[:q].blank?
-      @books = Book.page(params[:page]).per(6)
+      if signed_in? && current_user.friends.count > 0
+        @books = Book.friends_books_index(current_user).order(created_at: :desc).page params[:page]
+      else
+        @books = Book.order(created_at: :desc).page params[:page]
+      end
     end
   end
 
