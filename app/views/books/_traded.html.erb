@@ -58,11 +58,11 @@
         </div>
 
         <% if @book.state == 'Traded' &&  user_signed_in? && current_user == @book.user %> 
-            <%= link_to 'Dejar Disponible!', root_path, class: 'btn btn-sm btn-secondary' %>
-            <%= link_to 'Calificar', new_book_review_path(@book), class: 'btn btn-sm btn-warning' %>
+            <%= link_to 'Available now', root_path, class: 'btn btn-sm btn-secondary' %>
+            <%= link_to 'Wanna rate it!', new_book_review_path(@book), class: 'btn btn-sm btn-warning' %>
         <% end %>
         <% if @book.state == 'Traded' &&  user_signed_in? && current_user != @book.user %>
-        <%= link_to 'Calificar', new_book_review_path(@book), class: 'btn btn-sm btn-warning' %>
+        <%= link_to 'Wanna rate it!', new_book_review_path(@book), class: 'btn btn-sm btn-warning' %>
         <% end %>
     </div>
 </div>

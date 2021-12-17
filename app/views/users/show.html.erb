@@ -38,7 +38,7 @@
                         <%= @user.name %> <%= @user.last_name %>'s books
                     </h5>
                     <p class="card-text">
-                    <p class="session-label"> <strong class="book-label">Owned:</strong> 
+                    <p> <strong class="book-label">Owned:</strong> 
                         <% if @user.books.count == 0 %>
                             <%= @user.books.count %> books
                             <% elsif @user.books.count == 1 %>
@@ -76,6 +76,7 @@
             </div>
         <% end %>
     </div>
+
 
     <%= link_to 'Back', books_path, class: 'btn btn-outline-primary btn-sm' %>
 </div>

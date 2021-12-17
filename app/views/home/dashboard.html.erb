@@ -1,13 +1,13 @@
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-9">
-      <h1 class="mb-3">Hola <%= @user.name %>!</h1>
-      <h3 class="mb-4">Tu dashboard</h3>
+      <h1 class="mb-3">Hi <%= @user.name %>!</h1>
+      <h3 class="mb-4">Your dashboard</h3>
     </div>
     <div class="col-sm-3 mt-3">
-      <%= link_to 'Nuevo libro', new_book_path, class: 'btn btn-sm btn-custom-1' %>
-      <%=link_to 'Todos los libros', books_path, class: 'btn btn-sm btn-secondary ml-2' %>
-      <%= link_to 'Mis libros', my_books_path(@user), class: 'btn btn-sm bg-custom-4 ml-2' %>
+      <%= link_to "Let's add a book!", new_book_path, class: 'btn btn-sm btn-custom-1' %>
+      <%=link_to 'All books', books_path, class: 'btn btn-sm btn-secondary ml-2' %>
+      <%= link_to 'My books', my_books_path(@user), class: 'btn btn-sm bg-custom-4 ml-2' %>
     </div>
   </div>
 
@@ -17,9 +17,9 @@
         <div class="card-body">
           <h5 class="card-title">Stats</h5>
           <p class="card-text">
-            <strong>Intercambios entre usuarios:</strong>
+            <strong>User General exchanges:</strong>
             <%= pie_chart @exchanges.group_by(&:status).map { |k, v| [k, v.count] }, height: '200px', colors: ['#840404', '#CB0101', '#FFE3B7', '#FFAF00'] %>
-          <p class="card-text"><strong>Estado de tus libros: </strong><%= pie_chart @user.books.group(:state).count, height: '200px', colors: ['#42240C', '#C81912', '#F64B3C', '#FDBA9A'] %></p>
+          <p class="card-text"><strong>Your books' status: </strong><%= pie_chart @user.books.group(:state).count, height: '200px', colors: ['#42240C', '#C81912', '#F64B3C', '#FDBA9A'] %></p>
 
         </div>
       </div>
@@ -27,12 +27,12 @@
       <div class="col-md-6">
         <div class="card w-50 border-dark">
           <div class="card-body">
-            <h5 class="card-title">Mi información</h5>
-            <p class="card-text"><strong>Nombre:</strong> <%= @user.name %> <%= @user.last_name %></p>
+            <h5 class="card-title">Your Info</h5>
+            <p class="card-text"><strong>Name:</strong> <%= @user.name %> <%= @user.last_name %></p>
             <p class="card-text"><strong>Email:</strong> <%= @user.email %></p>
-            <p class="card-text"><strong>Teléfono:</strong> <%= @user.phone_number %></p>
-            <%= link_to 'Editar', edit_user_registration_path(@user), class: 'btn btn-custom-1 btn-sm' %>
-            <%= link_to 'Ver perfil', user_path(@user), class: 'btn bg-custom-3 btn-sm text-white' %>
+            <p class="card-text"><strong>Phone number:</strong> <%= @user.phone_number %></p>
+            <%= link_to 'Edit', edit_user_registration_path(@user), class: 'btn btn-custom-1 btn-sm' %>
+            <%= link_to 'Full profile', user_path(@user), class: 'btn bg-custom-3 btn-sm text-white' %>
           </div>
         </div>
       </div>
@@ -41,39 +41,46 @@
       <div class="col-md-6">
         <div class="card w-50 border-dark">
           <div class="card-body">
-            <h5 class="card-title">Libros intercambiados</h5>
+            <h5 class="card-title">My exchanged books:</h5>
             <p class="card-text book-label"> <% @exchanges.each do |exchange| %>
               <% if exchange.user1_id == current_user.id && exchange.status == 'accepted' %>
-                <%= link_to exchange.book1.title, book_path(exchange.book1), class: 'exchange-book' %>,  intercambiado por
+                <%= link_to exchange.book1.title, book_path(exchange.book1), class: 'exchange-book' %>,  exchanged for
               <strong><%= link_to exchange.book2.title, book_path(exchange.book2), class: 'exchange-book' %></strong> 
-              con el usuario <strong><%= exchange.user2.name %></strong> <small class="text-muted"><%= exchange.created_at.strftime("%d/%m/%Y") %></small>
+              with user <strong><%= exchange.user2.name %></strong> <small class="text-muted"><%= exchange.created_at.strftime("%d/%m/%Y") %></small>
             </p>
               <% end %>
               <p class="book-label"> <% if exchange.user2_id == current_user.id && exchange.status == 'accepted' %>
-                <%= link_to exchange.book2.title, book_path(exchange.book2), class: 'exchange-book' %>,  intercambiado por
+                <%= link_to exchange.book2.title, book_path(exchange.book2), class: 'exchange-book' %>,  exchanged for
               <strong><%= link_to exchange.book1.title, book_path(exchange.book1), class: 'exchange-book' %></strong> 
-              con el usuario <strong><%= exchange.user1.name %></strong> <small class="text-muted"><%= exchange.created_at.strftime("%d/%m/%Y") %></small>
+              with user <strong><%= exchange.user1.name %></strong> <small class="text-muted"><%= exchange.created_at.strftime("%d/%m/%Y") %></small>
               </p>
               <% end %>
             <% end %>
               <hr>
-            <p> <%= link_to 'Ver todos los intercambios', exchanges_path, class: 'btn btn-custom-1 btn-sm' %> </p>
+            <p> <%= link_to 'All exchanges', exchanges_path, class: 'btn btn-custom-1 btn-sm' %> </p>
           </div>
         </div>
       </div>
       <div class="col-md-6">
         <div class="card w-75 border-dark">
           <div class="card-body">
-            <h5 class="card-title">Libros que quiero leer</h5>
-            <p class="card-text"> <% @user.listed_books.each do |book| %>
-              <ul><%= link_to book.title, book_path(book), class: 'link-danger col-md-6', style: 'text-decoration: none; font-weight: bold;' %> </ul>
-            <% end %>
-            <% if @user.listed_books.count == 0 %>
-              <p>No tienes libros en tu lista</p>
-            </p> 
-            <% end %>
+            <div class="row">
+              <div class="col-md-6">
+                <%= image_tag '10.png', class: 'img-fluid bookshelf' %>
+              </div>
+              <div class="col-md-6">
+                <h5 class="card-title">Books I want to read</h5>
+                <p class="card-text"> <% @user.listed_books.each do |book| %>
+                  <ul><%= link_to book.title, book_path(book), class: 'link-danger col-md-6', style: 'text-decoration: none; font-weight: bold;' %> </ul>
+                <% end %>
+                <% if @user.listed_books.count == 0 %>
+                  <p> 
+                </p> 
+                <% end %>
+              </div>
+            </div>
             <hr>
-            <p> <%= link_to 'Ver mi lista', user_path(@user), class: 'btn btn-custom-1 btn-sm mx-5' %> </p>
+            <p> <%= link_to 'My booklist', user_path(@user), class: 'btn btn-custom-1 btn-sm mx-5' %> </p>
           </div>
         </div>
       </div>

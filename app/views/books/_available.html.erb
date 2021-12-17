@@ -58,13 +58,13 @@
         </div>
 
         <% if @book.state == 'Available' && user_signed_in? && current_user == @book.user %> 
-                <%= link_to 'Quiero intercambiarlo!', new_exchange_path, class: 'btn btn-sm btn-secondary' %>
-                <%= link_to 'Calificar', new_book_review_path(@book), class: 'btn btn-sm btn-warning' %>
-                <%= link_to 'Eliminar', destroy_book_path(@book), method: :delete, data: { confirm: "Seguro que desea eliminar? (Tenga en cuenta que esta acción no se puede deshacer)", disable_with: "Eliminando..." }, class: 'btn btn-sm btn-custom-3' %>
+                <%= link_to 'Wanna trade it!', new_exchange_path, class: 'btn btn-sm btn-secondary' %>
+                <%= link_to 'Wanna rate it!', new_book_review_path(@book), class: 'btn btn-sm btn-warning' %>
+                <%= link_to 'Delete book', destroy_book_path(@book), method: :delete, data: { confirm: "Seguro que desea eliminar? (Tenga en cuenta que esta acción no se puede deshacer)", disable_with: "Eliminando..." }, class: 'btn btn-sm btn-custom-3' %>
         <% end %>
         <% if @book.state == 'Available' &&  user_signed_in? && current_user != @book.user %>
-                <%= link_to 'Quiero leerlo!', new_exchange_path, class: 'btn btn-sm btn-secondary' %>
-                <%= link_to 'Calificar', new_book_review_path(@book), class: 'btn btn-sm btn-warning' %>
+                <%= link_to 'Wanna read it!', new_exchange_path, class: 'btn btn-sm btn-secondary' %>
+                <%= link_to 'Wanna rate it!', new_book_review_path(@book), class: 'btn btn-sm btn-warning' %>
         <% end %>
     </div>
 </div>
