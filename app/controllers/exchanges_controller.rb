@@ -20,6 +20,8 @@ class ExchangesController < ApplicationController
 
   # GET /exchanges/new
   def new
+    @user1 = User.find_by(id: params[:user1_id])
+    @user2 = User.find_by(id: params[:user2_id])
     @exchange = Exchange.new
   end
 
@@ -46,8 +48,8 @@ class ExchangesController < ApplicationController
     @book1 = Book.find_by(id: params[:exchange][:book1_id], user_id: @user1.id)
     @book2 = Book.find_by(id: params[:exchange][:book2_id], user_id: @user2.id)
     @exchange = Exchange.new(exchange_params)
-  
-
+    
+    format.js { render :create }
     if @exchange.save
       redirect_to @exchange, notice: 'Exchange was successfully created.'
       from = SendGrid::Email.new(email: 'javiera_56@hotmail.com') 

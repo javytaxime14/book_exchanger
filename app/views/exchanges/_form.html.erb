@@ -14,33 +14,33 @@
 
       <div>
         <%= form.label :user1_id, class: 'book-label' %> <br/>
-        <%= form.select :user1_id, User.all.select { |u| u == current_user }.map { |u| [u.name, u.id] } %>
+        <%= form.select :user1_id, User.all.select { |u| u == current_user }.map { |u| [u.name, u.id] }, id: 'exchange-user1' %>
       </div>
   
       <div class="field">
         <%= form.label :user2_id, class: 'book-label' %> <br/>
-        <%= form.select :user2_id, User.all.select { |u| u != current_user }.map { |u| [u.name, u.id] } %>
+        <%= form.select :user2_id, User.all.select { |u| u != current_user }.map { |u| [u.name, u.id] }, id: 'exchange-user2' %>
       </div>
     
       <div class="field">
         <%= form.label :book1_id, class: 'book-label' %> <br/>
-        <%= form.select :book1_id, current_user.books.select { |b| b.state == "Available" }.map { |b| [b.title, b.id] } %>
+        <%= form.select :book1_id, current_user.books.select { |b| b.state == "Available" }.map { |b| [b.title, b.id] }, id: 'exchange-book1', value: '' %>
       </div>
   
       <div class="field">
-        <%= form.label :book2_id, class: 'book-label' %> <br/>
-        <%= form.select :book2_id, Book.all.select { |b| b.user_id != current_user.id && b.state == "Available" }.map { |b| [b.title, b.id] } %>
+          <%= form.label :book2_id, class: 'book-label' %> <br/>
+          <%= form.select :book2_id, Book.all.select { |u| u == @user2 }.map { |b| [b.title, b.id] }, id: 'exchange-book2', value: '' %>
       </div>
-
+      
       <div class="field">
         <% if exchange.user2_id == current_user.id %>
           <%= form.label :status, class: 'book-label' %> <br/>
-          <%= form.select :status, Exchange.statuses.keys, { include_blank: false }, { default: "Pending" } %>
+          <%= form.select :status, Exchange.statuses.keys, { include_blank: false }, { default: "Pending" }, id: 'exchange-status' %>
         <% end %>
       </div>
 
     <div class="actions">
-      <%= form.submit "Crear intercambio", class: 'btn btn-primary btn-sm mt-3' %>
+      <%= form.submit "Let's exchange!", class: 'btn btn-primary btn-sm mt-3' %>
     </div>
   <% end %>
 </div>

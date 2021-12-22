@@ -43,3 +43,40 @@
 .table td {
     font-family: 'ABeeZee', sans-serif;
 }
+
+
+@media only screen and (max-width: 600px) {
+    table {
+        max-width: 100%;
+        margin-right: 20px;
+
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    table {
+        max-width: 75%;
+        margin-right: 20px;
+    }
+}
+
+@media only screen and (max-width: 992px) {
+    table {
+        max-width: 50%;
+        margin-right: 20px;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    table {
+        max-width: 50%;
+        margin-right: 20px;
+    }
+}
+
+@media only screen and (max-width: 1366px) {
+    table {
+        max-width: 50%;
+        margin-right: 20px;
+    }
+}

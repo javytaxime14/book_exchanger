@@ -1,0 +1,16 @@
+var input1 = document.getElementById('exchange-user2');
+var input2 = document.getElementById('exchange-book2');
+
+var updateInputs = function () {
+    input2.value = input1.value;
+}
+
+if (input1.addEventListener) {
+    input1.addEventListener('keyup', function () {
+        updateInputs();
+    });
+} else if (input1.attachEvent) { // support IE
+    input1.attachEvent('onkeyup', function () {
+        updateInputs();
+    });
+}
