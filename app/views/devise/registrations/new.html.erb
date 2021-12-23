@@ -1,7 +1,7 @@
 <div class="container mt-5">
   <h2 class="session-title">Sign up</h2>
   <div class="row">
-    <div class="col-md-5">
+    <div class="col-sm-6">
       <div class="card">
         <div class="card-body">
           <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -51,8 +51,27 @@
         </div>
       </div>
     </div>
-    <div class="col-md-7">
-      <%= image_tag '3.png', class: 'img-fluid mt-0 ml-0', style: 'float: right;' %>
+    <div class="col-sm-6 books-sign">
+      <div class="card mb-5">
+        <%= image_tag '3.png', class: 'img-fluid mt-4 book-pile', width: '80%' %>
+        <div class="card-body mt-4">
+          <h5 class="card-title text-weight-bold">Why join us?</h5>
+          <p class="card-text pr-5 pl-5">
+            As a member of our community, you will be able to:
+            <ul>
+              <li> Keep track of all books you have, and make a list of the ones you want to read.</li>
+              <li> Exchange books you have already read with other members of the community.</li>
+              <li> Add users to your friends list, and share your books with them.</li>
+              <li> Get books you're interested in from other users.</li>
+              
+              <em> and much more!</em>
+            </ul>
+          </p>
+        </div>
+      </div>
+
+
+      
   </div>
 
   

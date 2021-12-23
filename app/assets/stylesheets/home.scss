@@ -84,3 +84,49 @@ h5 {
 .session-label {
   font-family: 'ABeeZee', sans-serif;
 }
+
+.book-pile {
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+li {
+  font-family: 'Syne', sans-serif;
+}
+
+footer {
+  font-family: 'Readex Pro', sans-serif;
+  font-size: 0.9375rem;
+  color: #000;
+  text-align: left;
+  margin-top: 20px;
+  margin-bottom: -10px;
+}
+
+@media screen and (max-width: 768px) {
+
+  #btn-signup {
+    margin-right: 30px;
+  }
+  .home-title {
+    font-size: 2.5rem;
+    margin-left: 15px;
+  }
+
+  .home-caption {
+    font-size: 1.125rem;
+    margin-left: 15px;
+    margin-right: 12px;
+  }
+
+  .books-sign {
+    margin-top: 10px;
+  }
+
+}
+
+@media screen and (max-width: 1024px) {
+  #btn-signup {
+    margin-right: 39px;
+  } 
+}
